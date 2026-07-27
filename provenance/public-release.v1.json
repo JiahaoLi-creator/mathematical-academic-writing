@@ -1,0 +1,70 @@
+{
+  "core": {
+    "aggregate_algorithm": "sha256-path-nul-bytes-nul-v1",
+    "aggregate_sha256": "02a485d60cd7fd371f8a8b8219a96ad98ef04189936b108de9adea8c76f2e0d6",
+    "files": [
+      {
+        "path": "SKILL.md",
+        "sha256": "faae8cefdcfa3866115c163ad0f977b922f2af7cfee6f24b0a3dd6819f6504ed",
+        "size": 11557
+      },
+      {
+        "path": "agents/openai.yaml",
+        "sha256": "0a962fb1d295feb353775f8851a066230197a0152712612a8417439beae0d3db",
+        "size": 269
+      },
+      {
+        "path": "references/genre_profiles.md",
+        "sha256": "07abe07bdbb4e73246a429c138a27c069f4c0f18832ff076e33cf04b5e8ea2cf",
+        "size": 3628
+      },
+      {
+        "path": "references/mathematical_integrity.md",
+        "sha256": "e36dde164b9abbd192beb6eb95ced06f9452284fe8b000e1d06161f328041700",
+        "size": 7940
+      },
+      {
+        "path": "references/anti_defensive_audit.md",
+        "sha256": "08e8ea7156bba8eea21cc322022af911515f3146f4167af939cc86926a3fe781",
+        "size": 6707
+      },
+      {
+        "path": "references/visual_companion.md",
+        "sha256": "a7f8ed6f1808fd22c4047faccdd68293e2c5a32c0782a429ac1bf823e3756be1",
+        "size": 3736
+      },
+      {
+        "path": "references/corpus_manifest.md",
+        "sha256": "019bd7a6c328706f8a8877e8266b4c17e449a8f0c9236f6ff2c19ca45326cfac",
+        "size": 10753
+      },
+      {
+        "path": "project_profiles/math3015.md",
+        "sha256": "776bc08256a53d60fdcefa62a55214083ffdf95642a2cf8432da17594a7f4cf0",
+        "size": 1969
+      }
+    ]
+  },
+  "distribution": {
+    "name": "mathematical-academic-writing",
+    "scope": "public_runtime",
+    "version": "0.2.0"
+  },
+  "excluded_material": [
+    "source_pdfs",
+    "extracted_or_normalized_corpus_text",
+    "private_evidence_registry",
+    "blind_regression_oracles",
+    "source_derived_notebook_fixtures",
+    "signing_keys_and_trust_configuration",
+    "signed_private_release_metadata"
+  ],
+  "private_validation_lineage": {
+    "harness_sha256": "c24d7e652e51f05f086f3078d633b9cece8953c7a432430008cd99ffc2815609",
+    "manifest_sha256": "ce105d8b50806d6188655982c383c13104d4a02889a43d5d505cfebd251121b1",
+    "note": "Lineage anchors only; the private harness is not reproducible from this public repository.",
+    "payload_sha256": "ba1ee737ba2b82f4848631f178fef4a1c64dc6c194763b87182183b51d57c22a",
+    "status": "accepted_private_release"
+  },
+  "schema_version": "1.0.0"
+}

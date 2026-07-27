@@ -1,0 +1,6 @@
+{
+  "distribution": "withheld_private_validation_fixture",
+  "fixture": "source_derived_notebook_samples",
+  "reason": "Local notebooks, rendered previews, and course-source bindings are not distributed.",
+  "status": "notice_only"
+}
