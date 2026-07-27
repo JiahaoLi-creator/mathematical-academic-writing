@@ -119,16 +119,18 @@ An empty support entry is flagged rather than converted into a stronger claim.
 
 **After**
 
-> For an increment of length $h$,
-> $$
-> \frac{B_{t+h}-B_t}{h}\overset{d}=\frac{Z}{\sqrt h},
-> \qquad Z\sim N(0,1).
-> $$
-> Hence the median absolute difference quotient is
-> $\Phi^{-1}(0.75)h^{-1/2}\approx0.674h^{-1/2}$. In the supplied Figure 6, the plotted
-> medians follow this reference scale across the displayed resolutions. The cited theorem
-> establishes that the sample paths of standard Brownian motion are almost surely nowhere
-> differentiable.
+For an increment of length $h$,
+
+$$
+\frac{B_{t+h}-B_t}{h}\overset{d}=\frac{Z}{\sqrt h},
+\qquad Z\sim N(0,1).
+$$
+
+Hence the median absolute difference quotient is
+$\Phi^{-1}(0.75)h^{-1/2}\approx0.674h^{-1/2}$. In the supplied Figure 6, the plotted
+medians follow this reference scale across the displayed resolutions. The cited theorem
+establishes that the sample paths of standard Brownian motion are almost surely nowhere
+differentiable.
 
 The revision states the mathematical relation first, describes plotted evidence with visual
 language, and attributes the formal conclusion to its theorem.
