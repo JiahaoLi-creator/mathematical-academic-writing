@@ -593,7 +593,7 @@ figures describe the accepted private validation lineage; the public repository 
 runtime binding rather than the private corpus or blind oracles.
 
 同一私有发布版本通过了 58/58 个主 mutation cases 和 45/45 个 corpus mutation cases。公开仓库
-保存 runtime binding；私有 corpus 和 blind oracles 保留在独立验证环境中。
+保存 runtime binding；私有 corpus 和 blind oracles 保留在私有验证环境中。
 
 The eight byte-identical runtime files reproduce the accepted core binding:
 
