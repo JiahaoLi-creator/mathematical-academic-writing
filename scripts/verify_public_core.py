@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify the public runtime distribution and accepted eight-file core binding."""
+"""Verify the public runtime distribution and accepted twelve-file core binding."""
 
 from __future__ import annotations
 
@@ -21,29 +21,35 @@ EXPECTED_CORE_PATHS = (
     "SKILL.md",
     "agents/openai.yaml",
     "references/genre_profiles.md",
+    "references/research_article_workflows.md",
     "references/mathematical_integrity.md",
+    "references/source_and_derivation_audit.md",
     "references/anti_defensive_audit.md",
+    "references/artifact_verification.md",
     "references/visual_companion.md",
     "references/corpus_manifest.md",
     "project_profiles/math3015.md",
+    "project_profiles/quantitative_finance.md",
 )
+EXPECTED_CORE_SHA256 = "160b00a502b136e2827ea897722e5402c1fb51c5661a116d6701743797eb479c"
 EXPECTED_EXCLUDED_MATERIAL = [
     "source_pdfs",
     "extracted_or_normalized_corpus_text",
     "private_evidence_registry",
     "blind_regression_oracles",
+    "private_evaluation_outputs",
     "source_derived_notebook_fixtures",
     "signing_keys_and_trust_configuration",
     "signed_private_release_metadata",
 ]
 EXPECTED_PRIVATE_LINEAGE = {
-    "harness_sha256": "c24d7e652e51f05f086f3078d633b9cece8953c7a432430008cd99ffc2815609",
-    "manifest_sha256": "ce105d8b50806d6188655982c383c13104d4a02889a43d5d505cfebd251121b1",
+    "harness_sha256": "71f12d684bf852f9c535074cf0a1df70313fad99ac76cc088e81aea0f4efce80",
+    "manifest_sha256": "d85b7d166fbc1f28177e947031b88318748a3ca90d94b2a0841dafd4185d09cc",
     "note": (
         "Lineage anchors only; the private harness is not reproducible from this public "
         "repository."
     ),
-    "payload_sha256": "ba1ee737ba2b82f4848631f178fef4a1c64dc6c194763b87182183b51d57c22a",
+    "payload_sha256": "193e77e09c1d1a9db7ddaba11a26a0a2ccdd7f84fd76d00830920f81a46b913b",
     "status": "accepted_private_release",
 }
 EXPECTED_PUBLIC_FILES = {
@@ -60,22 +66,43 @@ EXPECTED_PUBLIC_FILES = {
     "assets/usage-workflow.png",
     "examples/quick-start.md",
     "project_profiles/math3015.md",
+    "project_profiles/quantitative_finance.md",
     "provenance/public-release.v1.json",
     "references/anti_defensive_audit.md",
+    "references/artifact_verification.md",
     "references/corpus_manifest.md",
     "references/genre_profiles.md",
     "references/mathematical_integrity.md",
+    "references/research_article_workflows.md",
+    "references/source_and_derivation_audit.md",
     "references/visual_companion.md",
     "scripts/verify_public_core.py",
+    "tests/draft_cases.json",
     "tests/notebook_samples.json",
     "tests/regression_cases.json",
+    "tests/verification_cases.json",
 }
 TEXT_NAMES = {".gitattributes", ".gitignore", "LICENSE"}
 TEXT_SUFFIXES = {".json", ".md", ".py", ".yaml", ".yml"}
 HEX64 = re.compile(r"[0-9a-f]{64}\Z")
-TOKEN_PATTERN = re.compile(r"\bgh[opusr]_[A-Za-z0-9]{20,}\b")
-ABSOLUTE_USER_PATH_PATTERN = re.compile(r"/Users/[A-Za-z0-9._-]+/")
-PRIVATE_KEY_MARKER = "-----BEGIN " + "OPENSSH PRIVATE KEY-----"
+TOKEN_PATTERN = re.compile(
+    r"\b(?:"
+    r"gh[opusr]_[A-Za-z0-9]{20,}|"
+    r"github_pat_[A-Za-z0-9_]{20,}|"
+    r"AKIA[0-9A-Z]{16}|"
+    r"sk-(?:proj-)?[A-Za-z0-9_-]{20,}|"
+    r"xox[baprs]-[A-Za-z0-9-]{10,}"
+    r")\b"
+)
+ABSOLUTE_USER_PATH_PATTERNS = (
+    re.compile(r"/Users/[A-Za-z0-9._-]+/"),
+    re.compile(r"/home/[A-Za-z0-9._-]+/"),
+    re.compile(r"[A-Za-z]:\\Users\\[^\\]+\\", re.IGNORECASE),
+)
+PRIVATE_KEY_MARKERS = tuple(
+    "-----BEGIN " + key_type + " PRIVATE KEY-----"
+    for key_type in ("OPENSSH", "RSA", "EC", "DSA")
+)
 
 
 class ValidationError(RuntimeError):
@@ -123,7 +150,7 @@ def load_provenance() -> dict[str, Any]:
     if distribution != {
         "name": "mathematical-academic-writing",
         "scope": "public_runtime",
-        "version": "0.2.0",
+        "version": "0.3.0",
     }:
         raise ValidationError("unexpected distribution identity")
     if value["excluded_material"] != EXPECTED_EXCLUDED_MATERIAL:
@@ -203,6 +230,8 @@ def verify_core(provenance: dict[str, Any], files: dict[str, Path]) -> str:
     expected = core["aggregate_sha256"]
     if not isinstance(expected, str) or HEX64.fullmatch(expected) is None:
         raise ValidationError("invalid aggregate SHA-256")
+    if expected != EXPECTED_CORE_SHA256:
+        raise ValidationError("provenance does not bind the accepted v0.3.0 core")
     if observed != expected:
         raise ValidationError(f"core aggregate mismatch: {observed} != {expected}")
     return observed
@@ -216,9 +245,9 @@ def scan_text_files(files: dict[str, Path]) -> None:
             text = path.read_text(encoding="utf-8")
         except UnicodeDecodeError as exc:
             raise ValidationError(f"non-UTF-8 public text file: {relative}") from exc
-        if ABSOLUTE_USER_PATH_PATTERN.search(text):
+        if any(pattern.search(text) for pattern in ABSOLUTE_USER_PATH_PATTERNS):
             raise ValidationError(f"absolute user path found in {relative}")
-        if PRIVATE_KEY_MARKER in text:
+        if any(marker in text for marker in PRIVATE_KEY_MARKERS):
             raise ValidationError(f"private key material found in {relative}")
         if TOKEN_PATTERN.search(text):
             raise ValidationError(f"GitHub token-shaped value found in {relative}")

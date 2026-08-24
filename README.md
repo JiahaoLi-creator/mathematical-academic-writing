@@ -1,6 +1,6 @@
 # Mathematical Academic Writing
 
-[![Version](https://img.shields.io/badge/version-v0.2.0-365E8D)](#validation)
+[![Version](https://img.shields.io/badge/version-v0.3.0-365E8D)](#validation)
 [![License: MIT](https://img.shields.io/badge/license-MIT-5F8C70)](LICENSE)
 [![Verify public core](https://github.com/JiahaoLi-creator/mathematical-academic-writing/actions/workflows/verify-core.yml/badge.svg)](https://github.com/JiahaoLi-creator/mathematical-academic-writing/actions/workflows/verify-core.yml)
 
@@ -98,7 +98,7 @@ removed when it only anticipates an unspecified objection or repeats a settled c
 
 ### From notebook revisions to a tested writing system
 
-The skill developed in four stages.
+The skill developed in five stages.
 
 1. **Concrete failures became review cases.** Notebook passages supplied examples of defensive
    framing, repeated conclusions, notation drift, and evidence inflation.
@@ -117,6 +117,9 @@ The skill developed in four stages.
 4. **Rule changes became testable against known cases.** Deterministic checks, semantic
    assertions, blind cases, metric assertions, mutation tests, and human release review were
    expanded around the revised system.
+5. **v0.3.0 widened the audit boundary.** Research-article workflows, a source-and-derivation
+   correction protocol, artifact verification levels, and a quantitative-finance profile were
+   added, then evaluated in fresh Review, Draft, Verification, and notebook contexts.
 
 The project was developed iteratively with Codex. Model-generated drafts supplied candidate text
 and failure cases; explicit rules, regression oracles, semantic reviews, and human release
@@ -135,9 +138,11 @@ public repository.
 | --- | --- |
 | Mathematical truth first | Preserve objects, domains, quantifiers, assumptions, implication direction, and convergence modes. |
 | Source fidelity | Use the designated primary source for notation, theorem scope, numbering, and topic boundaries. |
-| Working register | For drafting and revision, record each material claim together with its support, evidence level, site, and citation before editing. |
+| Working register | Lock each material claim to its support, evidence level, site, and citation; show the register only when traceability is material. |
 | Evidence-matched verbs | Proofs establish; derivations yield; examples exhibit; figures display; simulations estimate or agree numerically. |
 | Claim siting | State a claim where its support is strongest, then refer to the theorem, equation, section, or figure. |
+| Correction authority | Diagnose source conflicts and suspected errors without silently replacing the governing source. |
+| Verification depth | Distinguish text-, source-, execution-, and render-bound checks and report only the depth actually reached. |
 | Functional revision | Preserve meaningful negation, contrasts, limitations, and counterexamples; remove generic disclaimers and recapitulation. |
 | Genre and reader fit | Let research articles, proofs, lectures, computational studies, and visual companions use different structures. |
 
@@ -146,28 +151,31 @@ public repository.
 1. **Select the task mode.** Choose Draft, Revision, Review, or Verification.
 2. **Select the genre and reader.** Identify whether the output is a research passage,
    theorem-proof exposition, teaching explanation, computational analysis, or visual companion.
-3. **Establish source authority.** Name the primary source and any auxiliary sources.
-4. **Build the working register.** In Draft and Revision modes, lock notation, mathematical
-   objects, assumptions, claims, support, evidence level, site, and citation before changing the
-   prose. Review and Verification use the same fields to organise findings and then return their
-   mode-specific outputs.
-5. **Draft or revise by paragraph function.** Each paragraph performs one main job: motivation,
+3. **Establish source and correction authority.** Name the primary source, auxiliary sources, and
+   whether diagnosis or substantive correction is requested.
+4. **Set the verification depth.** Distinguish text, source, execution, and rendered-artifact
+   checks; do not claim a level that was not performed.
+5. **Build the working register.** Lock notation, objects, assumptions, claims, support, evidence
+   level, site, and citation. Keep it internal for a routine light edit and show it when
+   traceability is material.
+6. **Draft or revise by paragraph function.** Each paragraph performs one main job: motivation,
    definition, theorem, proof, example, caption, interpretation, or limitation.
-6. **Match language to evidence.** The evidence ladder fixes the strongest verb available to each
+7. **Match language to evidence.** The evidence ladder fixes the strongest verb available to each
    claim.
-7. **Run the anti-defensive audit.** Retain content that changes validity or interpretation;
+8. **Run the anti-defensive audit.** Retain content that changes validity or interpretation;
    rewrite framing that delays the mathematical content.
-8. **Compare the result with the register.** Check symbols, assumptions, quantifiers, claims,
-   citations, figure encodings, and numerical values before returning the text.
+9. **Compare the result with the register.** Check symbols, assumptions, quantifiers, claims,
+   citations, numerical values, execution evidence, and visible rendering before returning the
+   work.
 
 ### Task and genre modes
 
 | Mode | Use it for | Typical output |
 | --- | --- | --- |
-| Draft | Create prose from supplied mathematical content and sources. | Working register followed by original prose. |
-| Revision | Improve existing prose while preserving its mathematical semantics. | Working register, revised passage, and only material notes. |
+| Draft | Create prose from supplied mathematical content and sources. | Original prose; compact register, `Omit`, or `Flag` when material. |
+| Revision | Improve existing prose while preserving or source-authorizing its mathematical semantics. | Revised passage and only material register entries or notes. |
 | Review | Diagnose problems without rewriting the source. | Prioritised findings or `Keep`, `Rewrite`, `Compress`, `Delete`, and `Flag` decisions. |
-| Verification | Check claims, derivations, citations, or numerical conclusions against evidence. | `verified`, `unsupported`, `ambiguous`, or `incorrect`, with decisive support. |
+| Verification | Check claims, derivations, citations, numerical conclusions, or artifacts against evidence. | Verdict, decisive support, verification depth, and correction authority. |
 
 Genre profiles cover research articles, theorem-proof exposition, textbook and lecture
 explanations, computational and empirical analysis, and visual companions.
@@ -298,7 +306,7 @@ More reusable prompts are available in [examples/quick-start.md](examples/quick-
 
 ### 从 notebook 修改发展为可测试系统
 
-整个 skill 经历了四个阶段：
+整个 skill 经历了五个阶段：
 
 1. **将实际失败转化为 review cases。** Notebook 中的防御型表达、重复结论、记号漂移和
    evidence inflation 成为最初的回归样本。
@@ -315,6 +323,9 @@ More reusable prompts are available in [examples/quick-start.md](examples/quick-
    gate，重新校准证据用语，并完善当前版本中的图表、模拟和 anti-defensive rules。
 4. **让规则修改可以通过已知案例检验。** 修订后的系统扩展了确定性检查、语义断言、blind
    cases、metric assertions、mutation tests 和人工 release review。
+5. **v0.3.0 扩展审计边界。** 新增 research-article workflows、来源与推导纠错协议、artifact
+   verification 层级和 quantitative-finance profile，并在全新的 Review、Draft、Verification
+   与 notebook 上下文中完成检验。
 
 该项目由 Codex 参与迭代：模型生成的稿件提供 candidate text 和失败案例，明确规则、回归
 oracle（预先锁定的预期结果）、语义审阅和人工 release 决定共同控制哪些修改可以进入正式版本。
@@ -331,9 +342,11 @@ AI 与人类学者之间的量化比较。公开的
 | --- | --- |
 | 数学正确性优先 | 保留对象、定义域、量词、假设、蕴含方向和收敛方式。 |
 | 遵循权威来源 | 由用户指定的 primary source 决定记号、定理范围、编号和主题边界。 |
-| Working register | 在 Draft 和 Revision 中，修改前记录论断、支撑、证据层级、陈述位置和引用。 |
+| Working register | 锁定论断、支撑、证据层级、陈述位置和引用；仅在需要追溯时展示。 |
 | 证据与动词匹配 | 证明可以 establish；推导可以 yield；例子可以 exhibit；图表负责 display；模拟负责 estimate 或报告数值一致性。 |
 | Claim siting | 在支撑最强的位置陈述一次，后文通过定理、公式、章节或图号回指。 |
+| 纠错权限 | 诊断来源冲突与疑似错误，但不静默替换 governing source。 |
+| Verification depth | 区分 text-bound、source-bound、execution-bound 与 render-bound 检查，只报告实际达到的层级。 |
 | 功能型修改 | 保留必要否定、对比、限制和反例，减少空泛免责声明与重复总结。 |
 | 适配体裁和读者 | 研究论文、定理证明、课堂解释、计算研究和 visual companion 使用不同结构。 |
 
@@ -342,25 +355,25 @@ AI 与人类学者之间的量化比较。公开的
 1. **选择任务模式：** Draft、Revision、Review 或 Verification。
 2. **确定体裁和读者：** 明确输出是研究论文、定理证明、课堂讲解、计算分析还是 visual
    companion，以及读者已有的背景。
-3. **确定来源层级：** 指定 primary source 和辅助来源。
-4. **建立 working register：** Draft 和 Revision 在修改前锁定记号、数学对象、假设、论断、
-   支撑、证据层级、陈述位置和引用；Review 和 Verification 使用相同字段组织 findings，再按
-   各自模式返回结果。
-5. **按段落功能写作：** 每段主要完成 motivation、definition、theorem、proof、example、
+3. **确定来源与纠错权限：** 指定 primary source、辅助来源，以及任务只需诊断还是允许实质纠错。
+4. **确定 verification depth：** 区分文本、来源、执行与渲染检查，不声称未实际完成的层级。
+5. **建立 working register：** 锁定记号、对象、假设、论断、支撑、证据层级、陈述位置和引用；
+   常规轻量修改可保留在内部，需要可追溯性时再展示。
+6. **按段落功能写作：** 每段主要完成 motivation、definition、theorem、proof、example、
    caption、interpretation 或 limitation 中的一项任务。
-6. **让用词服从证据：** 根据 evidence ladder 选择证据允许的最强动词。
-7. **运行 anti-defensive audit：** 保留影响数学含义的限定，将延迟正文的防御型框架改为直接
+7. **让用词服从证据：** 根据 evidence ladder 选择证据允许的最强动词。
+8. **运行 anti-defensive audit：** 保留影响数学含义的限定，将延迟正文的防御型框架改为直接
    陈述对象、关系和范围。
-8. **与 register 终检：** 核对符号、假设、量词、论断、引用、图片编码和数值是否发生变化。
+9. **与 register 终检：** 核对符号、假设、量词、论断、引用、数值、执行证据和可见渲染。
 
 ### 四种任务模式
 
 | 模式 | 适用场景 | 典型输出 |
 | --- | --- | --- |
-| Draft | 根据用户提供的数学内容和来源起草新文本。 | Working register + 原创正文。 |
-| Revision | 在保留数学语义的前提下改进现有文本。 | Working register + 修改稿 + 必要说明。 |
+| Draft | 根据用户提供的数学内容和来源起草新文本。 | 原创正文；必要时附 compact register、`Omit` 或 `Flag`。 |
+| Revision | 保留或经来源授权纠正数学语义并改进文本。 | 修改稿 + 仅必要的 register 条目或说明。 |
 | Review | 诊断问题，不直接重写原文。 | 优先级 findings，或 `Keep`、`Rewrite`、`Compress`、`Delete`、`Flag`。 |
-| Verification | 根据来源核验论断、推导、引用或数值结论。 | `verified`、`unsupported`、`ambiguous` 或 `incorrect`，并给出决定性依据。 |
+| Verification | 根据证据核验论断、推导、引用、数值结论或 artifact。 | verdict、决定性依据、verification depth 与纠错权限。 |
 
 支持的 genre 包括研究论文、定理证明、教材与课堂讲解、计算或实证分析，以及 visual
 companion。
@@ -577,34 +590,35 @@ should begin with a field-specific corpus and genre review.
 
 ## Validation | 验证
 
-The accepted private v0.2.0 snapshot passed the selected cases below in fresh first-stage contexts
+The accepted private v0.3.0 snapshot passed the selected cases below in fresh first-stage contexts
 and separate semantic review contexts.
 
-私有 v0.2.0 accepted snapshot 在全新的一阶段上下文和分开的语义审阅上下文中通过了以下选定案例：
+私有 v0.3.0 accepted snapshot 在全新的一阶段上下文和分开的语义审阅上下文中通过了以下选定案例：
 
 | Suite / 测试套件 | First-stage result / 一阶段结果 | Semantic result / 语义结果 |
 | --- | ---: | ---: |
-| Synthetic review / 合成审阅 | 24/24 decisions | 51/51 assertions |
-| MATH3015 notebook review / MATH3015 notebook 审阅 | 9/9 decisions | 14/14 assertions |
-| Evidence-grounded drafting / 证据约束的起草 | 3/3 cases | 13/13 assertions |
+| Synthetic review / 合成审阅 | 25/25 decisions | 54/54 assertions |
+| MATH3015 notebook review / MATH3015 notebook 审阅 | 14/14 decisions | 29/29 assertions |
+| Evidence-grounded drafting / 证据约束的起草 | 7/7 cases | 26/26 assertions |
+| Source, derivation, and artifact verification / 来源、推导与 artifact 核验 | 10/10 verdicts | 30/30 assertions |
 
-The same private release passed 58/58 main mutation cases and 45/45 corpus mutation cases. These
+The same private release passed 78/78 main mutation cases and 45/45 corpus mutation cases. These
 figures describe the accepted private validation lineage; the public repository contains the
 runtime binding rather than the private corpus or blind oracles.
 
-同一私有发布版本通过了 58/58 个主 mutation cases 和 45/45 个 corpus mutation cases。公开仓库
+同一私有发布版本通过了 78/78 个主 mutation cases 和 45/45 个 corpus mutation cases。公开仓库
 保存 runtime binding；私有 corpus 和 blind oracles 保留在私有验证环境中。
 
-The eight byte-identical runtime files reproduce the accepted core binding:
+The twelve byte-identical runtime files reproduce the accepted core binding:
 
-八个逐字节一致的 runtime 文件共同复现 accepted core binding：
+十二个逐字节一致的 runtime 文件共同复现 accepted core binding：
 
 ```text
 Core skill aggregate SHA-256
-02a485d60cd7fd371f8a8b8219a96ad98ef04189936b108de9adea8c76f2e0d6
+160b00a502b136e2827ea897722e5402c1fb51c5661a116d6701743797eb479c
 
 Private validation-harness lineage SHA-256
-c24d7e652e51f05f086f3078d633b9cece8953c7a432430008cd99ffc2815609
+71f12d684bf852f9c535074cf0a1df70313fad99ac76cc088e81aea0f4efce80
 ```
 
 Run the public check locally:
@@ -615,11 +629,11 @@ Run the public check locally:
 python3 -B scripts/verify_public_core.py
 ```
 
-The check verifies the exact public file allowlist, regular-file and link constraints, the eight
+The check verifies the exact public file allowlist, regular-file and link constraints, the twelve
 core file hashes, their ordered aggregate, and a limited credential/path pattern scan. See
 [`provenance/public-release.v1.json`](provenance/public-release.v1.json) for the public binding.
 
-该检查核对公开文件 allowlist、普通文件与链接约束、八个 core 文件 hash、它们按顺序计算的
+该检查核对公开文件 allowlist、普通文件与链接约束、十二个 core 文件 hash、它们按顺序计算的
 aggregate hash，以及有限的 credential/path pattern。公开 binding 记录在
 [`provenance/public-release.v1.json`](provenance/public-release.v1.json)。
 
@@ -635,8 +649,8 @@ materials remain in the private release environment.
 | Included / 已公开 | Private release only / 仅私有发布环境 |
 | --- | --- |
 | `SKILL.md` and Codex metadata / `SKILL.md` 与 Codex metadata | Source PDFs and textbook files / 来源 PDF 与教材文件 |
-| Mathematical-integrity and genre guidance / 数学完整性与体裁指引 | Extracted or normalized source text / 抽取或归一化后的来源正文 |
-| Anti-defensive and visual-writing rules / Anti-defensive 与可视化写作规则 | Local notebooks and rendered fixtures / 本地 notebooks 与渲染 fixtures |
+| Integrity, genre, research-article, source-audit, and artifact guidance / 完整性、体裁、论文、来源审计与 artifact 指引 | Extracted or normalized source text / 抽取或归一化后的来源正文 |
+| Anti-defensive, visual-writing, MATH3015, and quantitative-finance profiles / Anti-defensive、可视化、MATH3015 与数理金融 profiles | Local notebooks and rendered fixtures / 本地 notebooks 与渲染 fixtures |
 | Public examples and workflow graphic / 公开示例与流程图 | Signing keys and trust configuration / 签名密钥与信任配置 |
 | License, notices, provenance, and public CI / 许可、声明、provenance 与公开 CI | Internal evidence registry and approval records / 内部 evidence registry 与审批记录 |
 | Notice-only fixture stubs / 仅含说明的 fixture stubs | Blind regression oracles and source-derived samples / 盲测回归 oracles 与来源衍生样本 |
@@ -656,7 +670,9 @@ binding；corpus 重新校准则使用私有 evidence package。
 ├── SKILL.md
 ├── agents/openai.yaml
 ├── references/
-├── project_profiles/math3015.md
+├── project_profiles/
+│   ├── math3015.md
+│   └── quantitative_finance.md
 ├── examples/quick-start.md
 ├── assets/usage-workflow.png
 ├── provenance/public-release.v1.json

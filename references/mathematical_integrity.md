@@ -104,11 +104,15 @@ Identify the support for each claim and select its verb from that rung:
 | Support | Permitted verbs | Forbidden for this support |
 | --- | --- | --- |
 | Formal proof | proves, establishes, shows that, implies, holds, characterises, if and only if | — |
+| Cited theorem in verified scope | establishes, implies, gives, under the cited assumptions | proves here; any claim outside the cited scope |
+| Proof-assistant certificate | certifies the formalized statement under the encoded assumptions | certifies the informal statement or source transcription without comparison |
 | Exact derivation | gives, yields, equals, follows, reduces to | proves, unless the derivation is the proof |
+| Symbolic or CAS computation | simplifies to, returns, matches symbolically under, is identically zero on the declared domain | proves without domain, branch, and assumption checks |
 | Worked example | in this case, for this example, exhibits, attains | in general, always, proves |
 | Counterexample | fails, need not, is not necessarily, provides a counterexample to | disproves the theorem; name the claim that fails |
 | Figure | displays, shows, plots, reports, depicts, compares | proves, establishes, implies, confirms, demonstrates that |
 | Simulation | decreases numerically, matches to within, is consistent with, estimates | proves, shows that, establishes, confirms, verifies |
+| Deterministic numerical computation | computes, returns, matches to tolerance, has residual | proves exact equality or convergence beyond the checked inputs |
 | Observational data | indicates in this sample, is associated with, we find | causes, proves, establishes, demonstrates |
 
 Figures and simulations support intuition and numerical agreement. Formal statements derive their
@@ -145,6 +149,8 @@ Preserve values that carry meaning:
 - partition sizes and time meshes;
 - axes, legends, color encodings, and reference lines;
 - error definitions and benchmark formulas.
+- physical units, scaling conventions, solver tolerances, and branch choices;
+- equation labels, macros, and renderer-specific notation when the artifact is exported.
 
 When compressing an interpretation, retain the values needed to connect the visible pattern to the mathematical conclusion.
 
@@ -154,6 +160,8 @@ When compressing an interpretation, retain the values needed to connect the visi
 - Keep distinctions between a source theorem, the current derivation, and a numerical check.
 - Use the user-designated primary source to define course boundaries.
 - State missing evidence as a request or unresolved item.
+- Distinguish a cited theorem from the current derivation and verify that its assumptions match the present objects.
+- Treat an unverified citation, inaccessible source, or remembered theorem statement as missing evidence.
 
 ## 9. Final comparison
 

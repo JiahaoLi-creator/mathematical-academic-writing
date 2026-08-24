@@ -1,4 +1,4 @@
 interface:
   display_name: "Mathematical Academic Writing"
-  short_description: "Draft and revise precise mathematical prose"
-  default_prompt: "Help with this mathematical writing while preserving its meaning, notation, assumptions, citations, and evidence strength."
+  short_description: "Draft, review, and verify rigorous mathematical prose"
+  default_prompt: "Help with this mathematical writing while preserving its notation, assumptions, logic, sources, and evidence strength; flag anything the available evidence cannot support."

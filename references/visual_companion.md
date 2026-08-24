@@ -86,6 +86,8 @@ Separate Monte Carlo uncertainty from discretisation, approximation, model, and 
 - Keep captions and interpretations as separate blocks.
 - Use adjustable code-cell parameters when they provide classroom interaction without fragile exports.
 - Rerun the notebook and inspect the rendered preview after content changes.
+- State whether the check was text-bound, source-bound, execution-bound, or render-bound; use [artifact verification](artifact_verification.md) for the corresponding evidence requirements.
+- Keep source code in the notebook even when a reader-facing preview hides inputs.
 
 ## Final visual-companion check
 

@@ -1,27 +1,37 @@
 {
   "core": {
     "aggregate_algorithm": "sha256-path-nul-bytes-nul-v1",
-    "aggregate_sha256": "02a485d60cd7fd371f8a8b8219a96ad98ef04189936b108de9adea8c76f2e0d6",
+    "aggregate_sha256": "160b00a502b136e2827ea897722e5402c1fb51c5661a116d6701743797eb479c",
     "files": [
       {
         "path": "SKILL.md",
-        "sha256": "faae8cefdcfa3866115c163ad0f977b922f2af7cfee6f24b0a3dd6819f6504ed",
-        "size": 11557
+        "sha256": "60376bf630c2d34dddcc97665293d941db124f0dc6004a886bea780bfaf12cb6",
+        "size": 11790
       },
       {
         "path": "agents/openai.yaml",
-        "sha256": "0a962fb1d295feb353775f8851a066230197a0152712612a8417439beae0d3db",
-        "size": 269
+        "sha256": "13a7c52f6a793449500f254e0ad42d24de4150bd46da2e4bb346246009f660cc",
+        "size": 328
       },
       {
         "path": "references/genre_profiles.md",
-        "sha256": "07abe07bdbb4e73246a429c138a27c069f4c0f18832ff076e33cf04b5e8ea2cf",
-        "size": 3628
+        "sha256": "412d624508d7f40d1efbb7d8cef3a4e4bf5658b7c44dfbc1d4af12c276c39ac8",
+        "size": 3723
+      },
+      {
+        "path": "references/research_article_workflows.md",
+        "sha256": "5fb143da028265531eb3e9c1c18390afc0f68adb8c2add4c42f048437f616f90",
+        "size": 3586
       },
       {
         "path": "references/mathematical_integrity.md",
-        "sha256": "e36dde164b9abbd192beb6eb95ced06f9452284fe8b000e1d06161f328041700",
-        "size": 7940
+        "sha256": "b44f59055a98142dacd63331f38bbc9c53a3726ac222f2ec7217d20bfb72e3c1",
+        "size": 8996
+      },
+      {
+        "path": "references/source_and_derivation_audit.md",
+        "sha256": "67a168f0f3d94caabfcb9e5fe4f5d67bc67c1f6fdf56e677dda6f4bbf9a4c93a",
+        "size": 4073
       },
       {
         "path": "references/anti_defensive_audit.md",
@@ -29,9 +39,14 @@
         "size": 6707
       },
       {
+        "path": "references/artifact_verification.md",
+        "sha256": "5242c290487211fe8d9f37fa112db5b9131d531c598cdbe7ba4676291f34b644",
+        "size": 2750
+      },
+      {
         "path": "references/visual_companion.md",
-        "sha256": "a7f8ed6f1808fd22c4047faccdd68293e2c5a32c0782a429ac1bf823e3756be1",
-        "size": 3736
+        "sha256": "c692752ada5426742bf58289cf63f0d438746f76f94586e7afc1ee5facf1d948",
+        "size": 4008
       },
       {
         "path": "references/corpus_manifest.md",
@@ -40,30 +55,36 @@
       },
       {
         "path": "project_profiles/math3015.md",
-        "sha256": "776bc08256a53d60fdcefa62a55214083ffdf95642a2cf8432da17594a7f4cf0",
-        "size": 1969
+        "sha256": "c8c3ff18861f4e8688a7fbb8add50cfce1e06da05d525bb41cbaf05f75d11129",
+        "size": 2760
+      },
+      {
+        "path": "project_profiles/quantitative_finance.md",
+        "sha256": "39d87e28fc6ad569de18177b1f785db798e969c0c8c8f63b462a9adb572c0d41",
+        "size": 2176
       }
     ]
   },
   "distribution": {
     "name": "mathematical-academic-writing",
     "scope": "public_runtime",
-    "version": "0.2.0"
+    "version": "0.3.0"
   },
   "excluded_material": [
     "source_pdfs",
     "extracted_or_normalized_corpus_text",
     "private_evidence_registry",
     "blind_regression_oracles",
+    "private_evaluation_outputs",
     "source_derived_notebook_fixtures",
     "signing_keys_and_trust_configuration",
     "signed_private_release_metadata"
   ],
   "private_validation_lineage": {
-    "harness_sha256": "c24d7e652e51f05f086f3078d633b9cece8953c7a432430008cd99ffc2815609",
-    "manifest_sha256": "ce105d8b50806d6188655982c383c13104d4a02889a43d5d505cfebd251121b1",
+    "harness_sha256": "71f12d684bf852f9c535074cf0a1df70313fad99ac76cc088e81aea0f4efce80",
+    "manifest_sha256": "d85b7d166fbc1f28177e947031b88318748a3ca90d94b2a0841dafd4185d09cc",
     "note": "Lineage anchors only; the private harness is not reproducible from this public repository.",
-    "payload_sha256": "ba1ee737ba2b82f4848631f178fef4a1c64dc6c194763b87182183b51d57c22a",
+    "payload_sha256": "193e77e09c1d1a9db7ddaba11a26a0a2ccdd7f84fd76d00830920f81a46b913b",
     "status": "accepted_private_release"
   },
   "schema_version": "1.0.0"

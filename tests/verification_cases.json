@@ -1,0 +1,6 @@
+{
+  "distribution": "withheld_private_validation_fixture",
+  "fixture": "source_derivation_and_artifact_verification_oracles",
+  "reason": "The accepted blind verification cases, evidence bindings, and semantic oracles are not included in the public runtime distribution.",
+  "status": "notice_only"
+}

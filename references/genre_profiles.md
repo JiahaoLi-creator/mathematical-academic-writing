@@ -4,6 +4,8 @@ Select one primary genre for each section. Combine profiles only when the docume
 
 ## Research article
 
+For article-scale work, also load [research-article workflows](research_article_workflows.md).
+
 Typical dependency:
 
 ```text
@@ -97,4 +99,3 @@ conceptual question
 ## Authorial voice
 
 Academic voice is a stable way of making mathematical decisions, not a collection of elevated phrases. Use direct sentences, precise verbs, and natural asymmetry in paragraph length. Maintain one name for each technical object. Explain local judgment when it helps the reader follow a derivation, modeling choice, or interpretation.
-

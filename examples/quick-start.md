@@ -21,9 +21,8 @@ Current passage:
 [paste the caption or interpretation]
 ```
 
-Expected shape: a compact working register followed by the revised paragraph. Notes appear only
-when a choice affects mathematical meaning, evidence strength, source fidelity, or an unresolved
-ambiguity.
+Expected shape: the revised paragraph, plus a compact register or note only when a choice affects
+mathematical meaning, evidence strength, source fidelity, or an unresolved ambiguity.
 
 ## Review theorem-proof exposition
 
@@ -62,3 +61,33 @@ Monte Carlo uncertainty, and discretisation error. Do not correct the prose unle
 
 Verification requires the relevant source or derivation. These instructions require missing
 support to be flagged and prohibit invented theorems, citations, parameters, and numerical results.
+
+## Draft a research contribution
+
+```text
+$mathematical-academic-writing
+
+Task: Draft
+Genre: Research article introduction
+Primary sources: [verified papers or supplied notes]
+Main result: [theorem, proposition, algorithm, or experiment]
+
+Draft one contribution paragraph. Tie the claimed limitation to a supplied source,
+the contribution to the named result, and the conclusion to its actual assumptions.
+Return Flag for any novelty or priority claim that the supplied sources do not establish.
+```
+
+## Verify a notebook or rendered artifact
+
+```text
+$mathematical-academic-writing
+
+Task: Verification
+Artifact: [notebook, code output, TeX, HTML preview, or PDF]
+Governing source: [theorem, derivation, or course notes]
+Required depth: [text-bound | source-bound | execution-bound | render-bound]
+
+Check the mathematical claim, correction authority, execution freshness, and visible
+rendering needed for the requested depth. Report the deepest level actually reached;
+do not change valid mathematics to repair a rendering defect.
+```

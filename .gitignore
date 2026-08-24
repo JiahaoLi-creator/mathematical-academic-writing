@@ -12,11 +12,14 @@ Reference_Materials/
 Python_notebook/
 references/corpus/
 tests/results/
+tests/evaluation_runs/
 *.pdf
 *.ipynb
 *.html
 
 # Signing and trust material
+.release/
+*.sig
 *.pem
 *.key
 id_ed25519*

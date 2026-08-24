@@ -1,0 +1,6 @@
+{
+  "distribution": "withheld_private_validation_fixture",
+  "fixture": "evidence_grounded_drafting_oracles",
+  "reason": "The accepted blind drafting cases and semantic oracles are not included in the public runtime distribution.",
+  "status": "notice_only"
+}
