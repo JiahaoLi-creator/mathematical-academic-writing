@@ -1,5 +1,19 @@
 # Changelog
 
+## v0.4.2 — 2026-09-01
+
+- Reissued the unchanged sixteen-file runtime core from the accepted signed private candidate
+  `candidate-324e2bf6e9d71f57`; the public core aggregate remains identical to v0.4.1.
+- Made signed support documentation phase-neutral and documented its release-governance boundary.
+- Added validated transitive governance reuse and atomic reuse-evidence staging without changing
+  the runtime skill or behavioral harness.
+- Updated public provenance to the verified v0.4.2 private manifest, signature, payload, and
+  governance bindings. Fifteen files remain byte-identical to the private runtime; the statistical
+  source map retains the same two-link public sanitization.
+
+The private corpus, source PDFs, course recordings and assets, blind fixtures, evaluator outputs,
+signing material, trust configuration, and full release harness remain excluded.
+
 ## v0.4.1 — 2026-09-01
 
 - Extended the general runtime from mathematical writing to statistical analysis and writing,

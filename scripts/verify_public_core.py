@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify the public-safe v0.4.1 runtime and its sixteen-file core binding."""
+"""Verify the public-safe v0.4.2 runtime and its sixteen-file core binding."""
 
 from __future__ import annotations
 
@@ -52,19 +52,19 @@ EXPECTED_PRIVATE_LINEAGE = {
     "behavioral_harness_sha256": (
         "24832ab20f7ecc7201c39f4bf953a88b23b68782793a2864de441c4b71de0d01"
     ),
-    "candidate_id": "candidate-36a8ddb896f73d2d",
+    "candidate_id": "candidate-324e2bf6e9d71f57",
     "candidate_identity_algorithm": "sha256-skill-behavioral-governance-nul-v2",
-    "manifest_sha256": "67442c0d4752367ed7ca8e43cd3f5ec15b7b1515d94de2025cc568ad4be08314",
+    "manifest_sha256": "99dff71ef6df740b31b4852c1da308f4033ca0495058090f7be2693a0943f0ef",
     "manifest_signature_sha256": (
-        "23f121ca1032341a2fd88b356f18e485c710dccd2c2547010bbf566dd80d4b58"
+        "c2127f18888438af6ac74fdbb9b0fc50da08823a679d4011e4b2c4bc718bfe93"
     ),
     "note": (
         "Lineage anchors only; private evidence, signatures, and trust configuration are not "
         "reproduced in this public repository."
     ),
-    "payload_sha256": "224f46d66d0070bad5b978eef2495ffd73d22e86f6510497445e46777f18e1ad",
+    "payload_sha256": "ac00c72aa31600042faeebf8e4b78dcacc66d5833c9652e6056d2dc1182ae0ac",
     "release_governance_sha256": (
-        "3133fca547b1935c57ce53ed844af24b891a8825e8905eb817b6dcd7eab7ea40"
+        "f68b83c21a7975ff9e2374bd138f4365cd897dabffe708de365cc7008731f54c"
     ),
     "runtime_skill_sha256": (
         "512fa76e8976f571129dd178400aa03af0d6426d7adf6331007dd206df212479"
@@ -194,7 +194,7 @@ def load_provenance() -> dict[str, Any]:
     if distribution != {
         "name": "mathematical-academic-writing",
         "scope": "public_runtime",
-        "version": "0.4.1",
+        "version": "0.4.2",
     }:
         raise ValidationError("unexpected distribution identity")
     if value["excluded_material"] != EXPECTED_EXCLUDED_MATERIAL:
@@ -277,7 +277,7 @@ def verify_core(provenance: dict[str, Any], files: dict[str, Path]) -> str:
     if not isinstance(expected, str) or HEX64.fullmatch(expected) is None:
         raise ValidationError("invalid aggregate SHA-256")
     if expected != EXPECTED_CORE_SHA256:
-        raise ValidationError("provenance does not bind the accepted public-safe v0.4.1 core")
+        raise ValidationError("provenance does not bind the accepted public-safe v0.4.2 core")
     if observed != expected:
         raise ValidationError(f"core aggregate mismatch: {observed} != {expected}")
     return observed

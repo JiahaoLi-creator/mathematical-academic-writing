@@ -1,6 +1,6 @@
 # Mathematical Academic Writing
 
-[![Version](https://img.shields.io/badge/version-v0.4.1-365E8D)](#validation)
+[![Version](https://img.shields.io/badge/version-v0.4.2-365E8D)](#validation)
 [![License: MIT](https://img.shields.io/badge/license-MIT-5F8C70)](LICENSE)
 [![Verify public core](https://github.com/JiahaoLi-creator/mathematical-academic-writing/actions/workflows/verify-core.yml/badge.svg)](https://github.com/JiahaoLi-creator/mathematical-academic-writing/actions/workflows/verify-core.yml)
 
@@ -607,14 +607,14 @@ statistical route.
 
 ## Validation | 验证
 
-The accepted v0.4.1 private release binds the selected cases below. v0.4.1 is a governance-only
-repair relative to the accepted v0.4.0 runtime and behavioral harness, so it reuses the exact
-accepted eight result files under an explicit reuse protocol rather than representing them as new
-contexts.
+The accepted v0.4.2 private release binds the selected cases below. v0.4.2 changes signed support
+documentation and release governance without changing the accepted v0.4.1 runtime or behavioral
+harness. It reuses the exact accepted eight result files through an explicit transitive
+governance-reuse protocol rather than representing them as fresh evaluation contexts.
 
-私有 v0.4.1 release 绑定了下列测试结果。v0.4.1 相对于已接受的 v0.4.0 runtime 与 behavioral
-harness 仅修复 governance，因此通过明确记录的 reuse protocol 复用完全相同的八个 accepted
-result files，并未将它们表述为新的评估上下文。
+私有 v0.4.2 release 绑定了下列测试结果。v0.4.2 更新签名支持文档与 release governance，未改变
+已接受的 v0.4.1 runtime 或 behavioral harness；它通过明确记录的 transitive governance-reuse
+protocol 复用完全相同的八个 accepted result files，并未将它们表述为新的评估上下文。
 
 | Suite / 测试套件 | First-stage result / 一阶段结果 | Semantic result / 语义结果 |
 | --- | ---: | ---: |
@@ -623,11 +623,11 @@ result files，并未将它们表述为新的评估上下文。
 | Evidence-grounded drafting / 证据约束的起草 | 13/13 cases | 53/53 assertions |
 | Source, derivation, and artifact verification / 来源、推导与 artifact 核验 | 26/26 verdicts | 87/87 assertions |
 
-The private release passed 125/125 main, 45/45 corpus, 41/41 candidate-state, 14/14 release-unit,
+The private release passed 125/125 main, 45/45 corpus, 42/42 candidate-state, 14/14 release-unit,
 and 21/21 signed-v2 mutation cases. These figures describe the private validation lineage; the
 public repository contains the runtime binding rather than the private corpus or blind oracles.
 
-同一私有发布版本通过了 125/125 个 main、45/45 个 corpus、41/41 个 candidate-state、14/14 个
+同一私有发布版本通过了 125/125 个 main、45/45 个 corpus、42/42 个 candidate-state、14/14 个
 release-unit 和 21/21 个 signed-v2 mutation cases。公开仓库保存 runtime binding；私有 corpus
 和 blind oracles 保留在私有验证环境中。
 
@@ -646,7 +646,7 @@ Accepted private runtime skill SHA-256
 512fa76e8976f571129dd178400aa03af0d6426d7adf6331007dd206df212479
 
 Signed private manifest SHA-256
-67442c0d4752367ed7ca8e43cd3f5ec15b7b1515d94de2025cc568ad4be08314
+99dff71ef6df740b31b4852c1da308f4033ca0495058090f7be2693a0943f0ef
 ```
 
 Run the public check locally:
