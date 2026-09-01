@@ -23,6 +23,7 @@ Verify:
 - domains, codomains, time intervals, index sets, and boundary conditions;
 - deterministic versus random quantities;
 - scalar, vector, matrix, process, path, and distributional objects.
+- populations, samples, observational units, variables, parameters, estimands, estimators, and estimates.
 
 Each symbol must refer to the same object before and after revision.
 
@@ -48,6 +49,7 @@ Keep assumptions beside the result or construction that uses them. Check:
 - integrability and square integrability;
 - continuity, differentiability, regularity, and growth conditions;
 - independence, stationarity, and distributional assumptions;
+- sampling, assignment, selection, censoring, missingness, and causal-identification assumptions;
 - market, data, algorithmic, and numerical assumptions.
 
 State a condition positively when that improves clarity. Preserve a negative condition when it has mathematical content.
@@ -113,10 +115,17 @@ Identify the support for each claim and select its verb from that rung:
 | Figure | displays, shows, plots, reports, depicts, compares | proves, establishes, implies, confirms, demonstrates that |
 | Simulation | decreases numerically, matches to within, is consistent with, estimates | proves, shows that, establishes, confirms, verifies |
 | Deterministic numerical computation | computes, returns, matches to tolerance, has residual | proves exact equality or convergence beyond the checked inputs |
+| Randomized experiment | estimates the prespecified causal contrast under the stated assignment, adherence, and analysis assumptions; reports the observed effect | proves a mechanism; generalizes beyond the study population or intervention without support |
+| Probability-sample or design-based estimate | estimates or reports the target-population quantity under the stated design, weights, and nonresponse assumptions | represents a different population or unobserved units without support |
+| Held-out predictive evaluation | reports loss, accuracy, calibration, or error on the untouched evaluation sample | proves future or shifted-population performance; identifies a causal mechanism |
 | Observational data | indicates in this sample, is associated with, we find | causes, proves, establishes, demonstrates |
 
 Figures and simulations support intuition and numerical agreement. Formal statements derive their
 validity from the theorem, derivation, or cited source.
+
+A Monte Carlo estimate remains on the `Simulation` rung when its seed is fixed or its benchmark is
+available in closed form. Record an exact benchmark separately as deterministic computation when
+useful; neither feature promotes the simulated estimate or its uncertainty to that rung.
 
 ### Section-level density diagnostic
 
@@ -137,6 +146,10 @@ a section into a band. A computational or visual section written at theorem-proo
 claim-level review: locate claims whose register entry lacks a proof or derivation and lower their
 verbs to the supporting rung.
 
+A negated boundary statement such as “no theorem establishes this rate” reports absent support; it
+is not itself a proof claim. Verb diagnostics must distinguish that use from the affirmative claim
+“the theorem establishes this rate.”
+
 Read the density for the section that contains the claim. A notebook that mixes a formal statement
 with a numerical experiment carries a different band in each.
 
@@ -151,6 +164,9 @@ Preserve values that carry meaning:
 - error definitions and benchmark formulas.
 - physical units, scaling conventions, solver tolerances, and branch choices;
 - equation labels, macros, and renderer-specific notation when the artifact is exported.
+
+Retain a material source-supplied total explicitly when it affects design or interpretation. Listing
+component counts from which a reader could recompute that total does not by itself preserve it.
 
 When compressing an interpretation, retain the values needed to connect the visible pattern to the mathematical conclusion.
 
@@ -176,5 +192,7 @@ Before returning a revision, answer:
 7. Does any output entry depart from the register recorded in section 5?
 8. Does any section exceed the proof-verb band for its evidence type?
 9. Is any claim stated in more than one site?
+10. Did the population, design, estimand, estimator, conditioning set, or uncertainty statement change?
+11. Did an association, prediction, interval, test, or robustness result acquire a stronger interpretation than its design and evidence support?
 
 Resolve or explicitly flag every discrepancy before release.

@@ -1,4 +1,4 @@
 interface:
-  display_name: "Mathematical Academic Writing"
-  short_description: "Draft, review, and verify rigorous mathematical prose"
-  default_prompt: "Help with this mathematical writing while preserving its notation, assumptions, logic, sources, and evidence strength; flag anything the available evidence cannot support."
+  display_name: "Mathematical & Statistical Writing"
+  short_description: "Plan, write, review, and verify rigorous mathematics and statistics"
+  default_prompt: "Help plan, write, review, interpret, or verify this mathematical or statistical work while preserving its question, units, target, design, notation, assumptions, uncertainty, diagnostics, sources, and evidence strength; flag anything the available evidence cannot support."

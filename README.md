@@ -1,6 +1,6 @@
 # Mathematical Academic Writing
 
-[![Version](https://img.shields.io/badge/version-v0.3.0-365E8D)](#validation)
+[![Version](https://img.shields.io/badge/version-v0.4.1-365E8D)](#validation)
 [![License: MIT](https://img.shields.io/badge/license-MIT-5F8C70)](LICENSE)
 [![Verify public core](https://github.com/JiahaoLi-creator/mathematical-academic-writing/actions/workflows/verify-core.yml/badge.svg)](https://github.com/JiahaoLi-creator/mathematical-academic-writing/actions/workflows/verify-core.yml)
 
@@ -8,10 +8,10 @@
 
 [Quick start](#quick-start--快速开始) · [English](#english) · [中文](#中文) · [Worked example](#worked-example--双语示例) · [Validation](#validation)
 
-**A source-grounded Codex skill that treats mathematical meaning as an explicit constraint and
-reduces repetitive or generic defensive prose.**
+**A source-grounded Codex skill for mathematical and statistical writing that preserves formal
+meaning, study design, inference, and evidence strength.**
 
-**一个面向数学学术写作的 Codex skill：以来源为依据，将数学含义作为明确约束，并减少重复和空泛的防御性表达。**
+**一个面向数学与统计学写作的 Codex skill：以来源为依据，保持形式语义、研究设计、统计推断和证据强度。**
 
 ---
 
@@ -56,16 +56,17 @@ git -C ~/.codex/skills/mathematical-academic-writing pull --ff-only
 
 ### Overview
 
-`mathematical-academic-writing` helps Codex draft, revise, review, and verify mathematical prose in
-probability, stochastic processes, stochastic analysis and stochastic calculus, quantitative
-finance, optimization, and numerical analysis. It is designed for work built around definitions,
-assumptions, formal results, derivations, computations, figures, simulations, and source-specific
-notation.
+`mathematical-academic-writing` helps Codex plan, draft, revise, review, and verify mathematical and
+statistical prose. It covers theorem-proof exposition, probability and stochastic analysis,
+statistical inference and learning, Bayesian and robust methods, quantitative finance,
+optimization, numerical analysis, empirical studies, and technical notebooks. It is designed for
+work whose meaning depends on definitions, targets, study design, assumptions, uncertainty,
+derivations, computations, figures, simulations, or source-specific notation.
 
 The skill organises a writing task around five questions:
 
-1. What mathematical object is under discussion?
-2. Which assumptions and notation govern it?
+1. What mathematical object, population, or statistical target is under discussion?
+2. Which assumptions, design choices, and notation govern it?
 3. What claim is being made?
 4. What evidence supports that claim?
 5. Where should the claim be stated once, clearly and at the correct strength?
@@ -98,7 +99,7 @@ removed when it only anticipates an unspecified objection or repeats a settled c
 
 ### From notebook revisions to a tested writing system
 
-The skill developed in five stages.
+The skill developed in six stages.
 
 1. **Concrete failures became review cases.** Notebook passages supplied examples of defensive
    framing, repeated conclusions, notation drift, and evidence inflation.
@@ -120,6 +121,11 @@ The skill developed in five stages.
 5. **v0.3.0 widened the audit boundary.** Research-article workflows, a source-and-derivation
    correction protocol, artifact verification levels, and a quantitative-finance profile were
    added, then evaluated in fresh Review, Draft, Verification, and notebook contexts.
+6. **v0.4.1 added a general statistical core.** The skill gained an Analysis mode, statistical
+   source routing, end-to-end analysis workflows, inference and reporting safeguards, and an
+   optional Advanced Mathematical Statistics course-notes profile. New tests protect study design,
+   p-values and intervals, finite-sample versus asymptotic claims, numerical retention, prediction,
+   causation, robustness, and layered verification verdicts.
 
 The project was developed iteratively with Codex. Model-generated drafts supplied candidate text
 and failure cases; explicit rules, regression oracles, semantic reviews, and human release
@@ -136,9 +142,9 @@ public repository.
 
 | Principle | Operational meaning |
 | --- | --- |
-| Mathematical truth first | Preserve objects, domains, quantifiers, assumptions, implication direction, and convergence modes. |
+| Mathematical and statistical validity | Preserve objects, targets, designs, assumptions, quantifiers, uncertainty, implication direction, and convergence modes. |
 | Source fidelity | Use the designated primary source for notation, theorem scope, numbering, and topic boundaries. |
-| Working register | Lock each material claim to its support, evidence level, site, and citation; show the register only when traceability is material. |
+| Working register | Lock notation, claims, support, evidence level, site, and citation; for statistical work also lock population, sample, design, estimand, estimator, uncertainty, and scope. |
 | Evidence-matched verbs | Proofs establish; derivations yield; examples exhibit; figures display; simulations estimate or agree numerically. |
 | Claim siting | State a claim where its support is strongest, then refer to the theorem, equation, section, or figure. |
 | Correction authority | Diagnose source conflicts and suspected errors without silently replacing the governing source. |
@@ -148,18 +154,20 @@ public repository.
 
 ### How the workflow operates
 
-1. **Select the task mode.** Choose Draft, Revision, Review, or Verification.
+1. **Select the task mode.** Choose Draft, Analysis, Revision, Review, or Verification.
 2. **Select the genre and reader.** Identify whether the output is a research passage,
-   theorem-proof exposition, teaching explanation, computational analysis, or visual companion.
+   theorem-proof exposition, statistical plan or report, teaching explanation, computational
+   analysis, or visual companion.
 3. **Establish source and correction authority.** Name the primary source, auxiliary sources, and
    whether diagnosis or substantive correction is requested.
 4. **Set the verification depth.** Distinguish text, source, execution, and rendered-artifact
    checks; do not claim a level that was not performed.
-5. **Build the working register.** Lock notation, objects, assumptions, claims, support, evidence
-   level, site, and citation. Keep it internal for a routine light edit and show it when
-   traceability is material.
+5. **Build the working register.** Lock notation, objects or targets, assumptions or design,
+   claims, support, uncertainty, evidence level, site, citation, and generalization scope. Keep it
+   internal for a routine light edit and show it when traceability is material.
 6. **Draft or revise by paragraph function.** Each paragraph performs one main job: motivation,
-   definition, theorem, proof, example, caption, interpretation, or limitation.
+   definition, data and design, theorem, proof, statistical result, example, caption,
+   interpretation, or limitation.
 7. **Match language to evidence.** The evidence ladder fixes the strongest verb available to each
    claim.
 8. **Run the anti-defensive audit.** Retain content that changes validity or interpretation;
@@ -172,13 +180,14 @@ public repository.
 
 | Mode | Use it for | Typical output |
 | --- | --- | --- |
-| Draft | Create prose from supplied mathematical content and sources. | Original prose; compact register, `Omit`, or `Flag` when material. |
-| Revision | Improve existing prose while preserving or source-authorizing its mathematical semantics. | Revised passage and only material register entries or notes. |
+| Draft | Create prose from supplied mathematical or statistical content and sources. | Original prose; compact register, `Omit`, or `Flag` when material. |
+| Analysis | Frame or audit a statistical workflow from question and design through target, method, uncertainty, diagnostics, sensitivity, and reporting. | Analysis contract with explicit unknowns and conditional branches. |
+| Revision | Improve existing prose while preserving or source-authorizing its mathematical or statistical semantics. | Revised passage and only material register entries or notes. |
 | Review | Diagnose problems without rewriting the source. | Prioritised findings or `Keep`, `Rewrite`, `Compress`, `Delete`, and `Flag` decisions. |
 | Verification | Check claims, derivations, citations, numerical conclusions, or artifacts against evidence. | Verdict, decisive support, verification depth, and correction authority. |
 
-Genre profiles cover research articles, theorem-proof exposition, textbook and lecture
-explanations, computational and empirical analysis, and visual companions.
+Genre profiles cover research articles, theorem-proof exposition, statistical plans and reports,
+textbook and lecture explanations, computational and empirical analysis, and visual companions.
 
 ### How to invoke it
 
@@ -187,9 +196,9 @@ Name the skill explicitly and supply the task contract:
 ```text
 $mathematical-academic-writing
 
-Task: [Draft | Revision | Review | Verification]
+Task: [Draft | Analysis | Revision | Review | Verification]
 Genre: [research article | theorem-proof | lecture explanation |
-        computational analysis | visual companion]
+        statistical analysis | computational analysis | visual companion]
 Audience: [intended reader]
 Primary source: [authoritative paper, textbook, lecture notes, or derivation]
 Auxiliary sources: [optional]
@@ -208,9 +217,9 @@ The most useful requests identify five things:
 - the elements that must remain fixed;
 - the desired output form and length.
 
-Codex may also select the skill automatically when the primary deliverable is mathematical prose.
-Explicit invocation is preferable when notation, source hierarchy, or evidence strength is central
-to the task.
+Codex may also select the skill automatically when the primary deliverable is mathematical or
+statistical prose. Explicit invocation is preferable when notation, design, source hierarchy,
+inference, or evidence strength is central to the task.
 
 ### Example requests
 
@@ -270,14 +279,15 @@ More reusable prompts are available in [examples/quick-start.md](examples/quick-
 
 ### 项目简介
 
-`mathematical-academic-writing` 用于辅助 Codex 起草、修改、审阅和核验数学写作，适用范围包括
-概率论、随机过程、随机分析与随机微积分、数理金融、优化和数值分析。它特别适合围绕定义、
-假设、定理、推导、计算、图表、模拟和来源特定记号展开的写作任务。
+`mathematical-academic-writing` 用于辅助 Codex 规划、起草、修改、审阅和核验数学与统计学写作，
+适用范围包括定理证明、概率与随机分析、统计推断与统计学习、Bayesian 与 robust methods、数理
+金融、优化、数值分析、实证研究和技术 notebook。它特别适合形式含义依赖定义、目标、研究设计、
+假设、不确定性、推导、计算、图表、模拟或来源特定记号的任务。
 
 该 skill 会围绕五个问题组织写作：
 
-1. 当前讨论的数学对象是什么？
-2. 哪些假设和记号约束这个对象？
+1. 当前讨论的数学对象、总体或统计目标是什么？
+2. 哪些假设、设计选择和记号约束它？
 3. 文本正在提出什么论断？
 4. 哪一类证据支撑该论断？
 5. 这个论断应该在哪里以恰当的强度陈述一次？
@@ -306,7 +316,7 @@ More reusable prompts are available in [examples/quick-start.md](examples/quick-
 
 ### 从 notebook 修改发展为可测试系统
 
-整个 skill 经历了五个阶段：
+整个 skill 经历了六个阶段：
 
 1. **将实际失败转化为 review cases。** Notebook 中的防御型表达、重复结论、记号漂移和
    evidence inflation 成为最初的回归样本。
@@ -326,6 +336,10 @@ More reusable prompts are available in [examples/quick-start.md](examples/quick-
 5. **v0.3.0 扩展审计边界。** 新增 research-article workflows、来源与推导纠错协议、artifact
    verification 层级和 quantitative-finance profile，并在全新的 Review、Draft、Verification
    与 notebook 上下文中完成检验。
+6. **v0.4.1 新增通用统计学核心。** 新版本加入 Analysis mode、统计来源路由、端到端分析流程、
+   推断与报告 safeguards，以及可选的 Advanced Mathematical Statistics 课程笔记 profile；
+   新测试覆盖研究设计、p-value 与区间、有限样本与渐近结论、数值保留、预测、因果、robustness
+   和分层 verification verdicts。
 
 该项目由 Codex 参与迭代：模型生成的稿件提供 candidate text 和失败案例，明确规则、回归
 oracle（预先锁定的预期结果）、语义审阅和人工 release 决定共同控制哪些修改可以进入正式版本。
@@ -340,9 +354,9 @@ AI 与人类学者之间的量化比较。公开的
 
 | 原则 | 实际作用 |
 | --- | --- |
-| 数学正确性优先 | 保留对象、定义域、量词、假设、蕴含方向和收敛方式。 |
+| 数学与统计有效性优先 | 保留对象、目标、设计、假设、量词、不确定性、蕴含方向和收敛方式。 |
 | 遵循权威来源 | 由用户指定的 primary source 决定记号、定理范围、编号和主题边界。 |
-| Working register | 锁定论断、支撑、证据层级、陈述位置和引用；仅在需要追溯时展示。 |
+| Working register | 锁定记号、论断、支撑、证据层级、陈述位置和引用；统计任务还要锁定总体、样本、设计、estimand、estimator、不确定性和适用范围。 |
 | 证据与动词匹配 | 证明可以 establish；推导可以 yield；例子可以 exhibit；图表负责 display；模拟负责 estimate 或报告数值一致性。 |
 | Claim siting | 在支撑最强的位置陈述一次，后文通过定理、公式、章节或图号回指。 |
 | 纠错权限 | 诊断来源冲突与疑似错误，但不静默替换 governing source。 |
@@ -352,31 +366,32 @@ AI 与人类学者之间的量化比较。公开的
 
 ### 工作流程
 
-1. **选择任务模式：** Draft、Revision、Review 或 Verification。
-2. **确定体裁和读者：** 明确输出是研究论文、定理证明、课堂讲解、计算分析还是 visual
-   companion，以及读者已有的背景。
+1. **选择任务模式：** Draft、Analysis、Revision、Review 或 Verification。
+2. **确定体裁和读者：** 明确输出是研究论文、定理证明、统计分析计划或报告、课堂讲解、计算
+   分析还是 visual companion，以及读者已有的背景。
 3. **确定来源与纠错权限：** 指定 primary source、辅助来源，以及任务只需诊断还是允许实质纠错。
 4. **确定 verification depth：** 区分文本、来源、执行与渲染检查，不声称未实际完成的层级。
-5. **建立 working register：** 锁定记号、对象、假设、论断、支撑、证据层级、陈述位置和引用；
-   常规轻量修改可保留在内部，需要可追溯性时再展示。
-6. **按段落功能写作：** 每段主要完成 motivation、definition、theorem、proof、example、
-   caption、interpretation 或 limitation 中的一项任务。
+5. **建立 working register：** 锁定记号、对象或目标、假设或设计、论断、支撑、不确定性、证据
+   层级、陈述位置、引用和 generalization scope；常规轻量修改可保留在内部，需要可追溯性时再展示。
+6. **按段落功能写作：** 每段主要完成 motivation、definition、data and design、theorem、proof、
+   statistical result、example、caption、interpretation 或 limitation 中的一项任务。
 7. **让用词服从证据：** 根据 evidence ladder 选择证据允许的最强动词。
 8. **运行 anti-defensive audit：** 保留影响数学含义的限定，将延迟正文的防御型框架改为直接
    陈述对象、关系和范围。
 9. **与 register 终检：** 核对符号、假设、量词、论断、引用、数值、执行证据和可见渲染。
 
-### 四种任务模式
+### 五种任务模式
 
 | 模式 | 适用场景 | 典型输出 |
 | --- | --- | --- |
-| Draft | 根据用户提供的数学内容和来源起草新文本。 | 原创正文；必要时附 compact register、`Omit` 或 `Flag`。 |
-| Revision | 保留或经来源授权纠正数学语义并改进文本。 | 修改稿 + 仅必要的 register 条目或说明。 |
+| Draft | 根据用户提供的数学或统计内容和来源起草新文本。 | 原创正文；必要时附 compact register、`Omit` 或 `Flag`。 |
+| Analysis | 从问题与设计出发，规划或审计 target、method、uncertainty、diagnostics、sensitivity 和 reporting。 | 明确 unknowns 与 conditional branches 的 analysis contract。 |
+| Revision | 保留或经来源授权纠正数学或统计语义并改进文本。 | 修改稿 + 仅必要的 register 条目或说明。 |
 | Review | 诊断问题，不直接重写原文。 | 优先级 findings，或 `Keep`、`Rewrite`、`Compress`、`Delete`、`Flag`。 |
 | Verification | 根据证据核验论断、推导、引用、数值结论或 artifact。 | verdict、决定性依据、verification depth 与纠错权限。 |
 
-支持的 genre 包括研究论文、定理证明、教材与课堂讲解、计算或实证分析，以及 visual
-companion。
+支持的 genre 包括研究论文、定理证明、统计分析计划与报告、教材与课堂讲解、计算或实证分析，
+以及 visual companion。
 
 ### 如何调用
 
@@ -385,9 +400,9 @@ companion。
 ```text
 $mathematical-academic-writing
 
-Task: [Draft | Revision | Review | Verification]
+Task: [Draft | Analysis | Revision | Review | Verification]
 Genre: [research article | theorem-proof | lecture explanation |
-        computational analysis | visual companion]
+        statistical analysis | computational analysis | visual companion]
 Audience: [目标读者]
 Primary source: [权威论文、教材、讲义或推导]
 Auxiliary sources: [可选]
@@ -406,8 +421,8 @@ Material:
 - 必须保持不变的内容；
 - 期望的篇幅和输出形式。
 
-当主要交付物是数学写作时，Codex 也可能自动选择该 skill。若任务特别重视记号、来源层级或
-证据强度，建议显式调用。
+当主要交付物是数学或统计学写作时，Codex 也可能自动选择该 skill。若任务特别重视记号、设计、
+来源层级、推断或证据强度，建议显式调用。
 
 ### 使用示例
 
@@ -578,11 +593,13 @@ surrounding Codex environment.
 ### Is it only for MATH3015? | 它只适用于 MATH3015 吗？
 
 No. MATH3015 supplied the original notebook cases and retains a dedicated project profile. The
-general rules cover the mathematical fields listed above. Expansion to a distant academic field
-should begin with a field-specific corpus and genre review.
+general core now covers the mathematical and statistical fields listed above; the Advanced
+Mathematical Statistics profile is an optional course-specific extension, not the default
+statistical route.
 
-不是。MATH3015 提供了最初的 notebook cases，并拥有独立 project profile；通用规则适用于上述
-数学领域。若扩展到差异较大的学科，应先进行该领域的 corpus 和 genre review。
+不是。MATH3015 提供了最初的 notebook cases，并拥有独立 project profile；通用核心现已覆盖
+上述数学与统计学领域。Advanced Mathematical Statistics profile 只是可选的课程专用扩展，
+不是一般统计分析的默认路线。
 
 ---
 
@@ -590,35 +607,46 @@ should begin with a field-specific corpus and genre review.
 
 ## Validation | 验证
 
-The accepted private v0.3.0 snapshot passed the selected cases below in fresh first-stage contexts
-and separate semantic review contexts.
+The accepted v0.4.1 private release binds the selected cases below. v0.4.1 is a governance-only
+repair relative to the accepted v0.4.0 runtime and behavioral harness, so it reuses the exact
+accepted eight result files under an explicit reuse protocol rather than representing them as new
+contexts.
 
-私有 v0.3.0 accepted snapshot 在全新的一阶段上下文和分开的语义审阅上下文中通过了以下选定案例：
+私有 v0.4.1 release 绑定了下列测试结果。v0.4.1 相对于已接受的 v0.4.0 runtime 与 behavioral
+harness 仅修复 governance，因此通过明确记录的 reuse protocol 复用完全相同的八个 accepted
+result files，并未将它们表述为新的评估上下文。
 
 | Suite / 测试套件 | First-stage result / 一阶段结果 | Semantic result / 语义结果 |
 | --- | ---: | ---: |
-| Synthetic review / 合成审阅 | 25/25 decisions | 54/54 assertions |
+| Synthetic review / 合成审阅 | 40/40 decisions | 100/100 assertions |
 | MATH3015 notebook review / MATH3015 notebook 审阅 | 14/14 decisions | 29/29 assertions |
-| Evidence-grounded drafting / 证据约束的起草 | 7/7 cases | 26/26 assertions |
-| Source, derivation, and artifact verification / 来源、推导与 artifact 核验 | 10/10 verdicts | 30/30 assertions |
+| Evidence-grounded drafting / 证据约束的起草 | 13/13 cases | 53/53 assertions |
+| Source, derivation, and artifact verification / 来源、推导与 artifact 核验 | 26/26 verdicts | 87/87 assertions |
 
-The same private release passed 78/78 main mutation cases and 45/45 corpus mutation cases. These
-figures describe the accepted private validation lineage; the public repository contains the
-runtime binding rather than the private corpus or blind oracles.
+The private release passed 125/125 main, 45/45 corpus, 41/41 candidate-state, 14/14 release-unit,
+and 21/21 signed-v2 mutation cases. These figures describe the private validation lineage; the
+public repository contains the runtime binding rather than the private corpus or blind oracles.
 
-同一私有发布版本通过了 78/78 个主 mutation cases 和 45/45 个 corpus mutation cases。公开仓库
-保存 runtime binding；私有 corpus 和 blind oracles 保留在私有验证环境中。
+同一私有发布版本通过了 125/125 个 main、45/45 个 corpus、41/41 个 candidate-state、14/14 个
+release-unit 和 21/21 个 signed-v2 mutation cases。公开仓库保存 runtime binding；私有 corpus
+和 blind oracles 保留在私有验证环境中。
 
-The twelve byte-identical runtime files reproduce the accepted core binding:
+Fifteen public runtime files are byte-identical to the signed private runtime. The public source map
+removes two local textbook links while preserving the bibliographic text and routing rules. This
+narrow sanitization is recorded in the public provenance.
 
-十二个逐字节一致的 runtime 文件共同复现 accepted core binding：
+十五个公开 runtime 文件与签名私有 runtime 逐字节一致；公开版 source map 只移除了两个本地教材
+链接，书目信息与路由规则保持不变。该窄范围净化记录在 public provenance 中。
 
 ```text
-Core skill aggregate SHA-256
-160b00a502b136e2827ea897722e5402c1fb51c5661a116d6701743797eb479c
+Public-safe core aggregate SHA-256
+07a8468980749d06e2d3ece451910ff4a2de91505153fcb0f4d6403f9a5dfe7f
 
-Private validation-harness lineage SHA-256
-71f12d684bf852f9c535074cf0a1df70313fad99ac76cc088e81aea0f4efce80
+Accepted private runtime skill SHA-256
+512fa76e8976f571129dd178400aa03af0d6426d7adf6331007dd206df212479
+
+Signed private manifest SHA-256
+67442c0d4752367ed7ca8e43cd3f5ec15b7b1515d94de2025cc568ad4be08314
 ```
 
 Run the public check locally:
@@ -629,12 +657,13 @@ Run the public check locally:
 python3 -B scripts/verify_public_core.py
 ```
 
-The check verifies the exact public file allowlist, regular-file and link constraints, the twelve
-core file hashes, their ordered aggregate, and a limited credential/path pattern scan. See
+The check verifies the exact public file allowlist, regular-file and link constraints, the sixteen
+core file hashes, their ordered aggregate, the recorded sanitization boundary, internal Markdown
+links, and a limited credential/path pattern scan. See
 [`provenance/public-release.v1.json`](provenance/public-release.v1.json) for the public binding.
 
-该检查核对公开文件 allowlist、普通文件与链接约束、十二个 core 文件 hash、它们按顺序计算的
-aggregate hash，以及有限的 credential/path pattern。公开 binding 记录在
+该检查核对公开文件 allowlist、普通文件与链接约束、十六个 core 文件 hash、它们按顺序计算的
+aggregate hash、已记录的净化边界、内部 Markdown links，以及有限的 credential/path pattern。公开 binding 记录在
 [`provenance/public-release.v1.json`](provenance/public-release.v1.json)。
 
 ## Public repository boundary | 公开仓库边界
@@ -649,8 +678,8 @@ materials remain in the private release environment.
 | Included / 已公开 | Private release only / 仅私有发布环境 |
 | --- | --- |
 | `SKILL.md` and Codex metadata / `SKILL.md` 与 Codex metadata | Source PDFs and textbook files / 来源 PDF 与教材文件 |
-| Integrity, genre, research-article, source-audit, and artifact guidance / 完整性、体裁、论文、来源审计与 artifact 指引 | Extracted or normalized source text / 抽取或归一化后的来源正文 |
-| Anti-defensive, visual-writing, MATH3015, and quantitative-finance profiles / Anti-defensive、可视化、MATH3015 与数理金融 profiles | Local notebooks and rendered fixtures / 本地 notebooks 与渲染 fixtures |
+| Mathematical, statistical, genre, research-article, source-audit, and artifact guidance / 数学、统计、体裁、论文、来源审计与 artifact 指引 | Extracted or normalized source text / 抽取或归一化后的来源正文 |
+| Anti-defensive, visual-writing, MATH3015, Advanced Mathematical Statistics, and quantitative-finance profiles / Anti-defensive、可视化、MATH3015、Advanced Mathematical Statistics 与数理金融 profiles | Local notebooks, recordings, course assets, and rendered fixtures / 本地 notebooks、录播、课程材料与渲染 fixtures |
 | Public examples and workflow graphic / 公开示例与流程图 | Signing keys and trust configuration / 签名密钥与信任配置 |
 | License, notices, provenance, and public CI / 许可、声明、provenance 与公开 CI | Internal evidence registry and approval records / 内部 evidence registry 与审批记录 |
 | Notice-only fixture stubs / 仅含说明的 fixture stubs | Blind regression oracles and source-derived samples / 盲测回归 oracles 与来源衍生样本 |
@@ -671,6 +700,7 @@ binding；corpus 重新校准则使用私有 evidence package。
 ├── agents/openai.yaml
 ├── references/
 ├── project_profiles/
+│   ├── advanced_mathematical_statistics.md
 │   ├── math3015.md
 │   └── quantitative_finance.md
 ├── examples/quick-start.md

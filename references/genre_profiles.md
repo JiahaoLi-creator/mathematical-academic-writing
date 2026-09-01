@@ -60,6 +60,31 @@ concrete question or obstruction
 - Match the declared reader level consistently.
 - Use exercises only when they complete a proof, test a definition, build a dependency, or extend a result.
 
+## Statistical theory, methods, or results
+
+Also load [general statistical analysis workflows](statistical_analysis_workflows.md) and
+[statistical writing and inference integrity](statistical_writing.md).
+
+Typical dependency:
+
+```text
+question and population
+-> design, model, and estimand
+-> estimator or procedure
+-> assumptions and uncertainty
+-> result
+-> interpretation and scope
+```
+
+- In theoretical work, state the statistical functional or parameter, procedure, regime, and
+  regularity conditions before its finite-sample or asymptotic property.
+- In methods prose, give the design, variables, preprocessing, estimator, tuning, and uncertainty
+  procedure needed to interpret or reproduce the result.
+- In results prose, pair the estimate and units with uncertainty, then calibrate the conclusion to
+  the sampling, assignment, selection, or evaluation protocol.
+- Separate descriptive, associational, predictive, causal, and decision claims. A document may
+  contain several, but each claim keeps its own support and scope.
+
 ## Computational or empirical analysis
 
 Typical dependency:

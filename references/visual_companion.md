@@ -37,6 +37,10 @@ Give each figure one main explanatory job.
 
 Place the interpretation in its own paragraph below the caption. Follow the project's layout profile for image alignment, captions, and body text.
 
+Compression may remove duplicated description, but it must not merge these two functions when both
+remain necessary. Keep encoding in the caption and visible pattern or mathematical meaning in the
+interpretation.
+
 The caption identifies what is plotted:
 
 - objects;
@@ -66,6 +70,10 @@ Vary the number of sentences to fit the figure while preserving this logic.
 State what the figure encodes and displays. Use the evidence ladder in [mathematical_integrity.md](mathematical_integrity.md) to distinguish theorem, derivation, example, figure, simulation, and observational claims.
 
 A real ambiguity is resolved by naming the encoding, class, or evidence source directly.
+
+When a defensive negative sentence concerns a figure property and the supplied context gives the
+intended encoding, rewrite the sentence as that positive encoding. Do not delete the sentence if
+doing so would leave the reader without the information needed to read the figure.
 
 ## Numerical experiments
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify the public runtime distribution and accepted twelve-file core binding."""
+"""Verify the public-safe v0.4.1 runtime and its sixteen-file core binding."""
 
 from __future__ import annotations
 
@@ -11,6 +11,7 @@ import stat
 import sys
 from pathlib import Path
 from typing import Any
+from urllib.parse import unquote
 
 
 sys.dont_write_bytecode = True
@@ -23,18 +24,23 @@ EXPECTED_CORE_PATHS = (
     "references/genre_profiles.md",
     "references/research_article_workflows.md",
     "references/mathematical_integrity.md",
+    "references/statistical_source_map.md",
+    "references/statistical_analysis_workflows.md",
+    "references/statistical_writing.md",
     "references/source_and_derivation_audit.md",
     "references/anti_defensive_audit.md",
     "references/artifact_verification.md",
     "references/visual_companion.md",
     "references/corpus_manifest.md",
     "project_profiles/math3015.md",
+    "project_profiles/advanced_mathematical_statistics.md",
     "project_profiles/quantitative_finance.md",
 )
-EXPECTED_CORE_SHA256 = "160b00a502b136e2827ea897722e5402c1fb51c5661a116d6701743797eb479c"
+EXPECTED_CORE_SHA256 = "07a8468980749d06e2d3ece451910ff4a2de91505153fcb0f4d6403f9a5dfe7f"
 EXPECTED_EXCLUDED_MATERIAL = [
     "source_pdfs",
     "extracted_or_normalized_corpus_text",
+    "restricted_course_recordings_transcripts_and_frames",
     "private_evidence_registry",
     "blind_regression_oracles",
     "private_evaluation_outputs",
@@ -43,14 +49,46 @@ EXPECTED_EXCLUDED_MATERIAL = [
     "signed_private_release_metadata",
 ]
 EXPECTED_PRIVATE_LINEAGE = {
-    "harness_sha256": "71f12d684bf852f9c535074cf0a1df70313fad99ac76cc088e81aea0f4efce80",
-    "manifest_sha256": "d85b7d166fbc1f28177e947031b88318748a3ca90d94b2a0841dafd4185d09cc",
-    "note": (
-        "Lineage anchors only; the private harness is not reproducible from this public "
-        "repository."
+    "behavioral_harness_sha256": (
+        "24832ab20f7ecc7201c39f4bf953a88b23b68782793a2864de441c4b71de0d01"
     ),
-    "payload_sha256": "193e77e09c1d1a9db7ddaba11a26a0a2ccdd7f84fd76d00830920f81a46b913b",
-    "status": "accepted_private_release",
+    "candidate_id": "candidate-36a8ddb896f73d2d",
+    "candidate_identity_algorithm": "sha256-skill-behavioral-governance-nul-v2",
+    "manifest_sha256": "67442c0d4752367ed7ca8e43cd3f5ec15b7b1515d94de2025cc568ad4be08314",
+    "manifest_signature_sha256": (
+        "23f121ca1032341a2fd88b356f18e485c710dccd2c2547010bbf566dd80d4b58"
+    ),
+    "note": (
+        "Lineage anchors only; private evidence, signatures, and trust configuration are not "
+        "reproduced in this public repository."
+    ),
+    "payload_sha256": "224f46d66d0070bad5b978eef2495ffd73d22e86f6510497445e46777f18e1ad",
+    "release_governance_sha256": (
+        "3133fca547b1935c57ce53ed844af24b891a8825e8905eb817b6dcd7eab7ea40"
+    ),
+    "runtime_skill_sha256": (
+        "512fa76e8976f571129dd178400aa03af0d6426d7adf6331007dd206df212479"
+    ),
+    "status": "verified_signed_private_release",
+}
+EXPECTED_PUBLIC_SANITIZATION = {
+    "changes": [
+        {
+            "operation": "remove_local_relative_links",
+            "path": "references/statistical_source_map.md",
+            "preserved": "bibliographic_text_and_routing_rules",
+            "private_sha256": (
+                "bf7df1c7d271ea0deb99cc253e26ef0fcd3e64e3211606ddc79229254a0afec4"
+            ),
+            "private_size": 6195,
+            "public_sha256": (
+                "77e9895c1d820b8632308bf78b6d5b20adeac8fa8c59c8431f57101e6849a8c7"
+            ),
+            "public_size": 6053,
+            "removed_link_count": 2,
+        }
+    ],
+    "policy": "narrow-public-path-sanitization-v1",
 }
 EXPECTED_PUBLIC_FILES = {
     ".gitattributes",
@@ -65,6 +103,7 @@ EXPECTED_PUBLIC_FILES = {
     "agents/openai.yaml",
     "assets/usage-workflow.png",
     "examples/quick-start.md",
+    "project_profiles/advanced_mathematical_statistics.md",
     "project_profiles/math3015.md",
     "project_profiles/quantitative_finance.md",
     "provenance/public-release.v1.json",
@@ -75,6 +114,9 @@ EXPECTED_PUBLIC_FILES = {
     "references/mathematical_integrity.md",
     "references/research_article_workflows.md",
     "references/source_and_derivation_audit.md",
+    "references/statistical_analysis_workflows.md",
+    "references/statistical_source_map.md",
+    "references/statistical_writing.md",
     "references/visual_companion.md",
     "scripts/verify_public_core.py",
     "tests/draft_cases.json",
@@ -103,6 +145,7 @@ PRIVATE_KEY_MARKERS = tuple(
     "-----BEGIN " + key_type + " PRIVATE KEY-----"
     for key_type in ("OPENSSH", "RSA", "EC", "DSA")
 )
+MARKDOWN_LINK_PATTERN = re.compile(r"!?\[[^\]]*\]\((<[^>]+>|[^)\s]+)")
 
 
 class ValidationError(RuntimeError):
@@ -141,22 +184,25 @@ def load_provenance() -> dict[str, Any]:
         "distribution",
         "excluded_material",
         "private_validation_lineage",
+        "public_sanitization",
         "schema_version",
     }:
         raise ValidationError("provenance top-level fields are not closed")
-    if value["schema_version"] != "1.0.0":
+    if value["schema_version"] != "1.1.0":
         raise ValidationError("unsupported provenance schema")
     distribution = value["distribution"]
     if distribution != {
         "name": "mathematical-academic-writing",
         "scope": "public_runtime",
-        "version": "0.3.0",
+        "version": "0.4.1",
     }:
         raise ValidationError("unexpected distribution identity")
     if value["excluded_material"] != EXPECTED_EXCLUDED_MATERIAL:
         raise ValidationError("unexpected excluded-material boundary")
     if value["private_validation_lineage"] != EXPECTED_PRIVATE_LINEAGE:
         raise ValidationError("unexpected private validation lineage")
+    if value["public_sanitization"] != EXPECTED_PUBLIC_SANITIZATION:
+        raise ValidationError("unexpected public sanitization boundary")
     return value
 
 
@@ -231,7 +277,7 @@ def verify_core(provenance: dict[str, Any], files: dict[str, Path]) -> str:
     if not isinstance(expected, str) or HEX64.fullmatch(expected) is None:
         raise ValidationError("invalid aggregate SHA-256")
     if expected != EXPECTED_CORE_SHA256:
-        raise ValidationError("provenance does not bind the accepted v0.3.0 core")
+        raise ValidationError("provenance does not bind the accepted public-safe v0.4.1 core")
     if observed != expected:
         raise ValidationError(f"core aggregate mismatch: {observed} != {expected}")
     return observed
@@ -250,7 +296,47 @@ def scan_text_files(files: dict[str, Path]) -> None:
         if any(marker in text for marker in PRIVATE_KEY_MARKERS):
             raise ValidationError(f"private key material found in {relative}")
         if TOKEN_PATTERN.search(text):
-            raise ValidationError(f"GitHub token-shaped value found in {relative}")
+            raise ValidationError(f"credential-shaped value found in {relative}")
+
+
+def verify_internal_markdown_links(files: dict[str, Path]) -> int:
+    root = ROOT.resolve()
+    checked = 0
+    for relative, path in files.items():
+        if path.suffix != ".md":
+            continue
+        text = path.read_text(encoding="utf-8")
+        for match in MARKDOWN_LINK_PATTERN.finditer(text):
+            target = match.group(1)
+            if target.startswith("<") and target.endswith(">"):
+                target = target[1:-1]
+            if target.startswith(("#", "https://", "http://", "mailto:")):
+                continue
+            if "://" in target or target.startswith(("data:", "javascript:")):
+                raise ValidationError(f"unsupported Markdown link in {relative}: {target}")
+            target = unquote(target.split("#", 1)[0].split("?", 1)[0])
+            if not target:
+                continue
+            resolved = (path.parent / target).resolve()
+            try:
+                resolved.relative_to(root)
+            except ValueError as exc:
+                raise ValidationError(
+                    f"Markdown link escapes the public tree in {relative}: {target}"
+                ) from exc
+            if not resolved.exists():
+                raise ValidationError(f"broken internal Markdown link in {relative}: {target}")
+            checked += 1
+    return checked
+
+
+def verify_sanitized_file(provenance: dict[str, Any], files: dict[str, Path]) -> None:
+    change = provenance["public_sanitization"]["changes"][0]
+    body = files[change["path"]].read_bytes()
+    if len(body) != change["public_size"]:
+        raise ValidationError("sanitized public file size mismatch")
+    if sha256_bytes(body) != change["public_sha256"]:
+        raise ValidationError("sanitized public file hash mismatch")
 
 
 def main() -> int:
@@ -259,6 +345,8 @@ def main() -> int:
         provenance = load_provenance()
         aggregate = verify_core(provenance, files)
         scan_text_files(files)
+        verify_sanitized_file(provenance, files)
+        internal_link_count = verify_internal_markdown_links(files)
     except (OSError, ValidationError) as exc:
         print(json.dumps({"error": str(exc), "status": "failed"}, sort_keys=True))
         return 1
@@ -267,7 +355,9 @@ def main() -> int:
             {
                 "core_file_count": len(EXPECTED_CORE_PATHS),
                 "core_sha256": aggregate,
+                "internal_markdown_links_checked": internal_link_count,
                 "public_file_count": len(files),
+                "sanitized_file_count": 1,
                 "status": "passed",
             },
             sort_keys=True,

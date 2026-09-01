@@ -77,6 +77,25 @@ the contribution to the named result, and the conclusion to its actual assumptio
 Return Flag for any novelty or priority claim that the supplied sources do not establish.
 ```
 
+## Plan or audit a statistical analysis
+
+```text
+$mathematical-academic-writing
+
+Task: Analysis
+Genre: Statistical analysis plan
+Question and intended use: [description, inference, prediction, causation, or decision]
+Data: [population, sample, unit, variables, design, missingness, and dependence]
+Primary sources: [protocol, data dictionary, method reference, or reporting standard]
+
+Specify the estimand or prediction target, primary method, uncertainty procedure,
+diagnostics, sensitivity or multiplicity checks, and reporting boundary. Mark every
+unavailable input and conditional branch; do not invent data, results, or design details.
+```
+
+Expected shape: an analysis contract that keeps population, sample, design, target, estimator,
+estimate, uncertainty, and generalization scope distinct.
+
 ## Verify a notebook or rendered artifact
 
 ```text

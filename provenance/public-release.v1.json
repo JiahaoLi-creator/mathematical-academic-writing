@@ -1,22 +1,22 @@
 {
   "core": {
     "aggregate_algorithm": "sha256-path-nul-bytes-nul-v1",
-    "aggregate_sha256": "160b00a502b136e2827ea897722e5402c1fb51c5661a116d6701743797eb479c",
+    "aggregate_sha256": "07a8468980749d06e2d3ece451910ff4a2de91505153fcb0f4d6403f9a5dfe7f",
     "files": [
       {
         "path": "SKILL.md",
-        "sha256": "60376bf630c2d34dddcc97665293d941db124f0dc6004a886bea780bfaf12cb6",
-        "size": 11790
+        "sha256": "0ab05156c0c5e1931c0658fcbdddeebed017bda6248bc1ed677e7e15d0c32865",
+        "size": 17212
       },
       {
         "path": "agents/openai.yaml",
-        "sha256": "13a7c52f6a793449500f254e0ad42d24de4150bd46da2e4bb346246009f660cc",
-        "size": 328
+        "sha256": "4a44e6d0688336c762bccebd26097909038e983bbcc0d4906726d16ee23da62f",
+        "size": 448
       },
       {
         "path": "references/genre_profiles.md",
-        "sha256": "412d624508d7f40d1efbb7d8cef3a4e4bf5658b7c44dfbc1d4af12c276c39ac8",
-        "size": 3723
+        "sha256": "60422958e00045ff1b9805a9512504ebb2ea371298da2c9f9230927b1c66fafb",
+        "size": 4759
       },
       {
         "path": "references/research_article_workflows.md",
@@ -25,13 +25,28 @@
       },
       {
         "path": "references/mathematical_integrity.md",
-        "sha256": "b44f59055a98142dacd63331f38bbc9c53a3726ac222f2ec7217d20bfb72e3c1",
-        "size": 8996
+        "sha256": "37d109d0ce410e299c45c5246c529e653f9e1d0dc9da94723d86058f3bdc3393",
+        "size": 10871
+      },
+      {
+        "path": "references/statistical_source_map.md",
+        "sha256": "77e9895c1d820b8632308bf78b6d5b20adeac8fa8c59c8431f57101e6849a8c7",
+        "size": 6053
+      },
+      {
+        "path": "references/statistical_analysis_workflows.md",
+        "sha256": "1591df1a751d58838331e857fd0c0af83c14a2c3052840ee66172b85706a7cbe",
+        "size": 13846
+      },
+      {
+        "path": "references/statistical_writing.md",
+        "sha256": "173d2800e961e9328cbd54184916a9d4f76b91943908fa310cd8cbb44eca3960",
+        "size": 13657
       },
       {
         "path": "references/source_and_derivation_audit.md",
-        "sha256": "67a168f0f3d94caabfcb9e5fe4f5d67bc67c1f6fdf56e677dda6f4bbf9a4c93a",
-        "size": 4073
+        "sha256": "f9467fc7c1596f7548fe44b4329665031e8a36c321455f5f6ca83fce090456c5",
+        "size": 6473
       },
       {
         "path": "references/anti_defensive_audit.md",
@@ -45,8 +60,8 @@
       },
       {
         "path": "references/visual_companion.md",
-        "sha256": "c692752ada5426742bf58289cf63f0d438746f76f94586e7afc1ee5facf1d948",
-        "size": 4008
+        "sha256": "7a152f9d687887a661df449cd021e9f5bda6523810847553f4592f144254d495",
+        "size": 4500
       },
       {
         "path": "references/corpus_manifest.md",
@@ -59,6 +74,11 @@
         "size": 2760
       },
       {
+        "path": "project_profiles/advanced_mathematical_statistics.md",
+        "sha256": "5d81ab2785083c328cb1282e299fe405218ee9fce21e13ceb3c26267fc44ec3c",
+        "size": 6773
+      },
+      {
         "path": "project_profiles/quantitative_finance.md",
         "sha256": "39d87e28fc6ad569de18177b1f785db798e969c0c8c8f63b462a9adb572c0d41",
         "size": 2176
@@ -68,11 +88,12 @@
   "distribution": {
     "name": "mathematical-academic-writing",
     "scope": "public_runtime",
-    "version": "0.3.0"
+    "version": "0.4.1"
   },
   "excluded_material": [
     "source_pdfs",
     "extracted_or_normalized_corpus_text",
+    "restricted_course_recordings_transcripts_and_frames",
     "private_evidence_registry",
     "blind_regression_oracles",
     "private_evaluation_outputs",
@@ -81,11 +102,31 @@
     "signed_private_release_metadata"
   ],
   "private_validation_lineage": {
-    "harness_sha256": "71f12d684bf852f9c535074cf0a1df70313fad99ac76cc088e81aea0f4efce80",
-    "manifest_sha256": "d85b7d166fbc1f28177e947031b88318748a3ca90d94b2a0841dafd4185d09cc",
-    "note": "Lineage anchors only; the private harness is not reproducible from this public repository.",
-    "payload_sha256": "193e77e09c1d1a9db7ddaba11a26a0a2ccdd7f84fd76d00830920f81a46b913b",
-    "status": "accepted_private_release"
+    "behavioral_harness_sha256": "24832ab20f7ecc7201c39f4bf953a88b23b68782793a2864de441c4b71de0d01",
+    "candidate_id": "candidate-36a8ddb896f73d2d",
+    "candidate_identity_algorithm": "sha256-skill-behavioral-governance-nul-v2",
+    "manifest_sha256": "67442c0d4752367ed7ca8e43cd3f5ec15b7b1515d94de2025cc568ad4be08314",
+    "manifest_signature_sha256": "23f121ca1032341a2fd88b356f18e485c710dccd2c2547010bbf566dd80d4b58",
+    "note": "Lineage anchors only; private evidence, signatures, and trust configuration are not reproduced in this public repository.",
+    "payload_sha256": "224f46d66d0070bad5b978eef2495ffd73d22e86f6510497445e46777f18e1ad",
+    "release_governance_sha256": "3133fca547b1935c57ce53ed844af24b891a8825e8905eb817b6dcd7eab7ea40",
+    "runtime_skill_sha256": "512fa76e8976f571129dd178400aa03af0d6426d7adf6331007dd206df212479",
+    "status": "verified_signed_private_release"
   },
-  "schema_version": "1.0.0"
+  "public_sanitization": {
+    "changes": [
+      {
+        "operation": "remove_local_relative_links",
+        "path": "references/statistical_source_map.md",
+        "preserved": "bibliographic_text_and_routing_rules",
+        "private_sha256": "bf7df1c7d271ea0deb99cc253e26ef0fcd3e64e3211606ddc79229254a0afec4",
+        "private_size": 6195,
+        "public_sha256": "77e9895c1d820b8632308bf78b6d5b20adeac8fa8c59c8431f57101e6849a8c7",
+        "public_size": 6053,
+        "removed_link_count": 2
+      }
+    ],
+    "policy": "narrow-public-path-sanitization-v1"
+  },
+  "schema_version": "1.1.0"
 }
