@@ -2,15 +2,46 @@
 
 ## Scope
 
-The principles are grounded in local probability papers and textbooks covering rigorous probability, stochastic processes, stochastic calculus, mathematical finance, optimization, numerical methods, and quantitative empirical work.
+The principles are grounded in local papers and textbooks covering rigorous probability,
+stochastic processes, stochastic calculus, mathematical finance, statistical analysis, optimization,
+numerical methods, and quantitative computational work.
 
-The inventory contains 44 PDFs in `Reference_Materials/probability/` and 90 PDF entries in
+The current inventory records 44 PDFs in `Reference_Materials/probability/` and 92 PDF entries in
 `Reference_Materials/Textbook/`, including papers, books, a dissertation, a presentation, split
 chapters, and full-volume representations. A preliminary 17-source, approximately 120,000-word
 extraction supplied the first directional check; the recovered 27-source measurement below
 supersedes it for every quantitative rule in this skill.
 
-The resulting skill is scoped to mathematical, probability, stochastic-analysis, quantitative-finance, and computational writing. Expansion to other academic fields should begin with a field-specific corpus review.
+The [statistical source map](statistical_source_map.md) adds task-specific methodological sources
+and the v0.4.3 close-reading supplement. Its ten books overlap the thirteen measured textbooks
+at *Convex Optimization*, giving twenty-two distinct reference books across these two sets.
+Representative titles listed below describe the wider local library; exact measured membership
+is recorded in `corpus/selection.v1.json`.
+
+## v0.4.3 close-reading supplement
+
+VanderPlas and Vershynin were inspected on 2026-10-03; Shumway-Stoffer was added on 2026-10-05:
+
+- Jake VanderPlas, *Python Data Science Handbook: Essential Tools for Working with Data*, first
+  edition, December 2016, O'Reilly Media; copyright 2017.
+- Roman Vershynin, *High-Dimensional Probability: An Introduction with Applications in Data
+  Science*, second-edition pre-publication version dated July 22, 2026.
+- Robert H. Shumway and David S. Stoffer, *Time Series Analysis and Its Applications: With R
+  Examples*, fourth edition, Springer, 2017.
+
+Their bibliography pages and selected methodological passages are recorded in
+`corpus/supplementary_sources.v0.4.3.json`. The record binds PDF identity, extraction ranges,
+raw and normalized text hashes, counts, and the inspected extraction runtime. The
+[source map](statistical_source_map.md) contains the page anchors and original writing guidance.
+`scripts/source_supplement.py` rebuilds and verifies this record from the local PDFs.
+
+The supplement contains extracted-text hashes and locators rather than redistributed source text.
+Its three records cover 81 sampled pages, including 35 from Shumway-Stoffer; that book already
+belongs to the 136-PDF inventory and is not a duplicate inventory addition.
+It extends qualitative coverage to 30 sampled writing sources while the numerical measurements
+below continue to describe exactly the original 27. The supplement is included in the candidate's
+release-governance hash and later package signature. The updated 136-PDF inventory requires a new
+external corpus approval; the historical signature remains evidence for the previous inventory only.
 
 ## Representative probability and mathematical-finance papers
 
@@ -63,7 +94,7 @@ produces the 238,497 words used in this table.
 
 Machine-readable bindings:
 
-- `corpus/inventory.v1.jsonl`: 134 current PDF records and byte hashes;
+- `corpus/inventory.v1.jsonl`: 136 current PDF records and byte hashes;
 - `corpus/duplicate_groups.v1.json`: representation and overlap groups;
 - `corpus/evidence_registry.v1.json`: bibliography locators, document adjudication, page segments,
   cited external authority records where needed, PDF hashes, current-PDF reproduction records, raw

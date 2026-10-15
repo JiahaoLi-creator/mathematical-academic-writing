@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify the public-safe v0.4.2 runtime and its sixteen-file core binding."""
+"""Verify the public-safe v0.4.3 runtime and its seventeen-file core binding."""
 
 from __future__ import annotations
 
@@ -18,25 +18,24 @@ sys.dont_write_bytecode = True
 
 ROOT = Path(__file__).resolve().parents[1]
 PROVENANCE = ROOT / "provenance/public-release.v1.json"
-EXPECTED_CORE_PATHS = (
-    "SKILL.md",
-    "agents/openai.yaml",
-    "references/genre_profiles.md",
-    "references/research_article_workflows.md",
-    "references/mathematical_integrity.md",
-    "references/statistical_source_map.md",
-    "references/statistical_analysis_workflows.md",
-    "references/statistical_writing.md",
-    "references/source_and_derivation_audit.md",
-    "references/anti_defensive_audit.md",
-    "references/artifact_verification.md",
-    "references/visual_companion.md",
-    "references/corpus_manifest.md",
-    "project_profiles/math3015.md",
-    "project_profiles/advanced_mathematical_statistics.md",
-    "project_profiles/quantitative_finance.md",
-)
-EXPECTED_CORE_SHA256 = "07a8468980749d06e2d3ece451910ff4a2de91505153fcb0f4d6403f9a5dfe7f"
+EXPECTED_CORE_PATHS = ('SKILL.md',
+ 'agents/openai.yaml',
+ 'references/genre_profiles.md',
+ 'references/research_article_workflows.md',
+ 'references/mathematical_integrity.md',
+ 'references/statistical_source_map.md',
+ 'references/statistical_analysis_workflows.md',
+ 'references/statistical_writing.md',
+ 'references/time_series_writing.md',
+ 'references/source_and_derivation_audit.md',
+ 'references/anti_defensive_audit.md',
+ 'references/artifact_verification.md',
+ 'references/visual_companion.md',
+ 'references/corpus_manifest.md',
+ 'project_profiles/math3015.md',
+ 'project_profiles/advanced_mathematical_statistics.md',
+ 'project_profiles/quantitative_finance.md')
+EXPECTED_CORE_SHA256 = '6334a3dfc41dbbf721504f42e94219a7742c6aa3c18942f66ecef7064c5e6a55'
 EXPECTED_EXCLUDED_MATERIAL = [
     "source_pdfs",
     "extracted_or_normalized_corpus_text",
@@ -48,82 +47,59 @@ EXPECTED_EXCLUDED_MATERIAL = [
     "signing_keys_and_trust_configuration",
     "signed_private_release_metadata",
 ]
-EXPECTED_PRIVATE_LINEAGE = {
-    "behavioral_harness_sha256": (
-        "24832ab20f7ecc7201c39f4bf953a88b23b68782793a2864de441c4b71de0d01"
-    ),
-    "candidate_id": "candidate-324e2bf6e9d71f57",
-    "candidate_identity_algorithm": "sha256-skill-behavioral-governance-nul-v2",
-    "manifest_sha256": "99dff71ef6df740b31b4852c1da308f4033ca0495058090f7be2693a0943f0ef",
-    "manifest_signature_sha256": (
-        "c2127f18888438af6ac74fdbb9b0fc50da08823a679d4011e4b2c4bc718bfe93"
-    ),
-    "note": (
-        "Lineage anchors only; private evidence, signatures, and trust configuration are not "
-        "reproduced in this public repository."
-    ),
-    "payload_sha256": "ac00c72aa31600042faeebf8e4b78dcacc66d5833c9652e6056d2dc1182ae0ac",
-    "release_governance_sha256": (
-        "f68b83c21a7975ff9e2374bd138f4365cd897dabffe708de365cc7008731f54c"
-    ),
-    "runtime_skill_sha256": (
-        "512fa76e8976f571129dd178400aa03af0d6426d7adf6331007dd206df212479"
-    ),
-    "status": "verified_signed_private_release",
-}
-EXPECTED_PUBLIC_SANITIZATION = {
-    "changes": [
-        {
-            "operation": "remove_local_relative_links",
-            "path": "references/statistical_source_map.md",
-            "preserved": "bibliographic_text_and_routing_rules",
-            "private_sha256": (
-                "bf7df1c7d271ea0deb99cc253e26ef0fcd3e64e3211606ddc79229254a0afec4"
-            ),
-            "private_size": 6195,
-            "public_sha256": (
-                "77e9895c1d820b8632308bf78b6d5b20adeac8fa8c59c8431f57101e6849a8c7"
-            ),
-            "public_size": 6053,
-            "removed_link_count": 2,
-        }
-    ],
-    "policy": "narrow-public-path-sanitization-v1",
-}
-EXPECTED_PUBLIC_FILES = {
-    ".gitattributes",
-    ".github/workflows/verify-core.yml",
-    ".gitignore",
-    "CHANGELOG.md",
-    "LICENSE",
-    "MAINTENANCE.md",
-    "README.md",
-    "SKILL.md",
-    "THIRD_PARTY_NOTICES.md",
-    "agents/openai.yaml",
-    "assets/usage-workflow.png",
-    "examples/quick-start.md",
-    "project_profiles/advanced_mathematical_statistics.md",
-    "project_profiles/math3015.md",
-    "project_profiles/quantitative_finance.md",
-    "provenance/public-release.v1.json",
-    "references/anti_defensive_audit.md",
-    "references/artifact_verification.md",
-    "references/corpus_manifest.md",
-    "references/genre_profiles.md",
-    "references/mathematical_integrity.md",
-    "references/research_article_workflows.md",
-    "references/source_and_derivation_audit.md",
-    "references/statistical_analysis_workflows.md",
-    "references/statistical_source_map.md",
-    "references/statistical_writing.md",
-    "references/visual_companion.md",
-    "scripts/verify_public_core.py",
-    "tests/draft_cases.json",
-    "tests/notebook_samples.json",
-    "tests/regression_cases.json",
-    "tests/verification_cases.json",
-}
+EXPECTED_PRIVATE_LINEAGE = {'behavioral_harness_sha256': '6ad1bb8da1770d69e28d281a19cee6a98788d53b4b66da3884cfadb04b67eeba',
+ 'candidate_id': 'candidate-ebc94b8f4fc8faaa',
+ 'candidate_identity_algorithm': 'sha256-skill-behavioral-governance-nul-v2',
+ 'manifest_sha256': '802764456abfb58ad0f7b50218d6425e25e0231bf4bb8b0a7cb405fddd7d0e0d',
+ 'manifest_signature_sha256': '7ad2e4dbbf541e6d0f3b76030ba491213f35b9e55f158729ed5cb415db694981',
+ 'note': 'Lineage anchors only; private evidence, signatures, and trust configuration are not '
+         'reproduced in this public repository.',
+ 'payload_sha256': 'cecb295b68be1b1b774f27b5e1f375daf9d7f18b943debb3747c55b448725d7c',
+ 'release_governance_sha256': 'ff1d427b5eb236f9b295064581feb5ac91e5e0845d2e6f24cac84a065a5a831a',
+ 'runtime_skill_sha256': '938ebf9db84b4980bb19888e5a2c418f5a4787a80e489831c7d8d51f325e2f7b',
+ 'status': 'verified_signed_private_release'}
+EXPECTED_PUBLIC_SANITIZATION = {'changes': [{'operation': 'remove_local_relative_links',
+              'path': 'references/statistical_source_map.md',
+              'preserved': 'bibliographic_text_and_routing_rules',
+              'private_sha256': '2f93fa560107d4af2e70c15cf24f97a30ee6f7bee2272767600692fbd5219109',
+              'private_size': 12391,
+              'public_sha256': 'd25cfbcab6a854d5603030f0a5e61dd83978d5a27e42961712e4a301cc839aef',
+              'public_size': 12160,
+              'removed_link_count': 3}],
+ 'policy': 'narrow-public-path-sanitization-v1'}
+EXPECTED_PUBLIC_FILES = {'.gitattributes',
+ '.github/workflows/verify-core.yml',
+ '.gitignore',
+ 'CHANGELOG.md',
+ 'LICENSE',
+ 'MAINTENANCE.md',
+ 'README.md',
+ 'SKILL.md',
+ 'THIRD_PARTY_NOTICES.md',
+ 'agents/openai.yaml',
+ 'assets/usage-workflow.png',
+ 'examples/quick-start.md',
+ 'project_profiles/advanced_mathematical_statistics.md',
+ 'project_profiles/math3015.md',
+ 'project_profiles/quantitative_finance.md',
+ 'provenance/public-release.v1.json',
+ 'references/anti_defensive_audit.md',
+ 'references/artifact_verification.md',
+ 'references/corpus_manifest.md',
+ 'references/genre_profiles.md',
+ 'references/mathematical_integrity.md',
+ 'references/research_article_workflows.md',
+ 'references/source_and_derivation_audit.md',
+ 'references/statistical_analysis_workflows.md',
+ 'references/statistical_source_map.md',
+ 'references/statistical_writing.md',
+ 'references/time_series_writing.md',
+ 'references/visual_companion.md',
+ 'scripts/verify_public_core.py',
+ 'tests/draft_cases.json',
+ 'tests/notebook_samples.json',
+ 'tests/regression_cases.json',
+ 'tests/verification_cases.json'}
 TEXT_NAMES = {".gitattributes", ".gitignore", "LICENSE"}
 TEXT_SUFFIXES = {".json", ".md", ".py", ".yaml", ".yml"}
 HEX64 = re.compile(r"[0-9a-f]{64}\Z")
@@ -194,7 +170,7 @@ def load_provenance() -> dict[str, Any]:
     if distribution != {
         "name": "mathematical-academic-writing",
         "scope": "public_runtime",
-        "version": "0.4.2",
+        "version": "0.4.3",
     }:
         raise ValidationError("unexpected distribution identity")
     if value["excluded_material"] != EXPECTED_EXCLUDED_MATERIAL:
@@ -277,7 +253,7 @@ def verify_core(provenance: dict[str, Any], files: dict[str, Path]) -> str:
     if not isinstance(expected, str) or HEX64.fullmatch(expected) is None:
         raise ValidationError("invalid aggregate SHA-256")
     if expected != EXPECTED_CORE_SHA256:
-        raise ValidationError("provenance does not bind the accepted public-safe v0.4.2 core")
+        raise ValidationError("provenance does not bind the accepted public-safe v0.4.3 core")
     if observed != expected:
         raise ValidationError(f"core aggregate mismatch: {observed} != {expected}")
     return observed

@@ -187,6 +187,10 @@ Put diagnostics and sensitivity results beside the claim they qualify. Distingui
 from exploratory or post-selection analyses. Report missingness, exclusions, subgroup definitions,
 and preprocessing before drawing a population-level conclusion.
 
+Attach an absence statement to the exact quantity and stage supported by the evidence. A result
+not supplied in the materials need not be unestimated or uncomputed; retain an explicitly recorded
+absence, but do not extend it to upstream calculations through an ambiguous collective reference.
+
 If the fitted model reports odds or hazards while the scientific question is on a probability or
 risk scale, report the supported model-scale result and name the marginal probabilities, risk
 contrast, survival probability, or cumulative-incidence calculation required to answer the other

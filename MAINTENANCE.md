@@ -1,11 +1,10 @@
 # Public Maintenance Boundary
 
-This repository is the public runtime distribution of the accepted v0.4.2 skill. It does not
-contain the full release harness.
+This repository is the public runtime distribution of the accepted v0.4.3 skill. It does not
+contain the full private release harness.
 
-The private gate uses source PDFs, extracted text, an evidence registry, blind regression oracles,
-source-derived notebook fixtures, detached approvals, and independent semantic review. Those
-materials are excluded for copyright, privacy, and oracle-integrity reasons.
+Source PDFs, extracted text, evidence registries, blind oracles, source-derived notebook fixtures,
+detached approvals, evaluator outputs, signing keys, and trust configuration remain private.
 
 ## Public checks
 
@@ -15,26 +14,23 @@ Run:
 python3 -B scripts/verify_public_core.py
 ```
 
-This verifies the public allowlist and the accepted sixteen-file core binding recorded in
-`provenance/public-release.v1.json`.
+The check enforces the closed 33-file public allowlist and the accepted seventeen-file core binding
+in `provenance/public-release.v1.json`, plus link and limited credential/path checks.
 
 ## Behavioral changes
 
-The v0.4.2 runtime and provenance binding are immutable. Any change to `SKILL.md`,
-`agents/openai.yaml`, `references/`, or `project_profiles/` starts a new candidate version. That
-candidate becomes an accepted release only after it passes the full private deterministic,
-semantic, mutation, and human-review gates and receives its own public provenance record.
+Changes to `SKILL.md`, `agents/openai.yaml`, `references/`, or `project_profiles/` require a new
+accepted private candidate and a new public provenance record. Documentation-only changes may
+retain the core binding only while all seventeen runtime files remain byte-identical.
 
-Documentation-only changes may retain the core binding when all sixteen runtime files remain
-byte-identical and the public verifier passes.
+The public v0.4.3 runtime is derived from accepted, signed private candidate
+`candidate-ebc94b8f4fc8faaa`. Sixteen files are byte-identical. The sole sanitization removes three
+local PDF link targets from `references/statistical_source_map.md`, preserving link labels,
+bibliographic facts, locators, and routing rules. The exact transformation is bound in provenance.
+No additional runtime alteration is authorized by that path-sanitization policy.
 
-The public v0.4.2 core is derived from the signed private v0.4.2 runtime. It is byte-identical to
-the accepted v0.4.1 public core because the v0.4.2 release changes only signed support
-documentation and governance. Fifteen files remain
-byte-identical. `references/statistical_source_map.md` removes two links to local textbook files
-while preserving the cited titles, editions, routing rules, and boundaries. This is the only
-permitted v0.4.2 public sanitization and is bound in provenance. Any additional runtime difference
-requires a new release candidate.
+The final private candidate used explicitly recorded governance-only reuse of the exact prior
+accepted 4+4 sample; its provenance must not be described as fresh evaluation contexts.
 
-The JSON files under `tests/` are notice-only placeholders. They document the withheld suite
-classes without disclosing blind or source-derived fixtures, result files, or semantic oracles.
+The JSON files under `tests/` are notice-only placeholders. They contain no private cases,
+expected answers, evaluator outputs, or source-derived fixtures.

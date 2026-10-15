@@ -73,6 +73,8 @@ Check the shortest chain that settles the claim:
 
 When a numerical contrast is part of the decisive evidence, carry its supplied values into the
 reader-facing verification rather than replacing them with a qualitative summary.
+Preserve supplied observed, unmeasured, or latent status when it affects the inference.
+A variable's role in equations alone does not determine whether it was observed.
 
 For stochastic calculus, also check filtration, predictability, stopping or localization, integrability class, horizon, and whether a local martingale must be a true martingale.
 
@@ -89,7 +91,13 @@ When sources disagree:
 2. normalize notation in a separate comparison line, never inside the source quotation;
 3. determine whether the difference is convention, scope, typo, or substance;
 4. prefer the user-designated primary source for course notation and boundaries;
-5. retain the conflict as `ambiguous` if available evidence does not settle it.
+5. separate the established conflict from the unresolved intended reading or repair.
+
+When the evidence establishes an internal conflict, that observation is `verified`;
+which convention or source line was intended can remain `ambiguous`. For one verdict,
+name that exact target, then compare its literal wording with the status and decisive
+check. A refuted assertion that the source is consistent is `incorrect`, even if notes
+separately leave the intended repair unresolved.
 
 A later source, a familiar formula, or majority usage is not by itself correction authority.
 An ambiguity flag is complete only when it identifies the minimal conflicting set and names the

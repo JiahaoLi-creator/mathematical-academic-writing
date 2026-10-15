@@ -26,3 +26,6 @@ id_ed25519*
 allowed_signers
 selection_approval.v1.json*
 manifest.v1.json*
+
+# All private signed-manifest schema versions
+manifest.v2.json*

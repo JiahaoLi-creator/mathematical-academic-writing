@@ -7,9 +7,7 @@ description: Draft, revise, review, or verify prose when the primary deliverable
 
 ## Aim
 
-Produce source-grounded prose in which every paragraph performs a clear mathematical or statistical task. Preserve definitions, targets, designs, assumptions, results, uncertainty, notation, citations, and evidence strength while improving structure, explanation, directness, and economy.
-
-Learn structural practices from the reference corpus and write original prose. Let the mathematical object, question, result, or evidence govern the presentation.
+Produce source-grounded prose in which every paragraph performs a clear mathematical or statistical task. Preserve definitions, targets, designs, assumptions, results, uncertainty, notation, citations, and evidence strength while improving structure, explanation, directness, and economy. Learn structural practices from the reference corpus and write original prose. Let the mathematical object, question, result, or evidence govern the presentation.
 
 ## Priority order
 
@@ -51,9 +49,10 @@ Read only the references required by the task:
 - Use [genre profiles](references/genre_profiles.md) to select section structure and authorial stance.
 - Use [research-article workflows](references/research_article_workflows.md) for abstracts, introductions, contributions, related work, methods, results, referee reports, or responses.
 - Use [mathematical integrity](references/mathematical_integrity.md) whenever formulas, proofs, stochastic claims, citations, or numerical evidence are in scope.
-- Use the [statistical source map](references/statistical_source_map.md) to select among the user-designated inference, learning, Bayesian, robust, discretization, and optimization references.
+- Use the [statistical source map](references/statistical_source_map.md) to select among the user-designated inference, learning, Bayesian, robust, time-series, discretization, optimization, Python data-science, and high-dimensional probability references.
 - Use [general statistical analysis workflows](references/statistical_analysis_workflows.md) by default when planning, conducting, reviewing, interpreting, or reporting an analysis of data.
 - Use [statistical writing and inference integrity](references/statistical_writing.md) whenever a population, sample, design, model, estimand, estimator, test, interval, prediction, causal claim, or empirical result is in scope.
+- Use [time-series writing](references/time_series_writing.md) when dependence over time, stationarity, ARIMA, forecasting, spectra, or state estimation determines the claim.
 - Use the [source and derivation audit](references/source_and_derivation_audit.md) for Verification, conflicting sources, suspected errors, or source-authorized correction.
 - Use the [anti-defensive audit](references/anti_defensive_audit.md) for revision, review, compression, or generic AI-style prose.
 - Use [artifact verification](references/artifact_verification.md) for notebooks, TeX, HTML previews, PDFs, execution claims, or rendered equations.
@@ -78,10 +77,10 @@ In a stylistic revision, preserve the source claim and flag a suspected error se
 
 ## Workflow
 
-1. Identify task mode, genre, reader, governing sources, requested length, and verification depth.
+1. Identify task mode, genre, reader, governing sources, requested edit extent, length, and verification depth.
 2. Lock notation, terminology, assumptions, and claim scope in the working register.
 3. Map the dependency chain. For mathematics use object -> assumptions -> claim -> support -> scope. For statistics use question -> provenance, units, and design -> estimand or prediction target -> method -> uncertainty -> diagnostics and sensitivity -> interpretation -> scope.
-4. Draft or revise so each paragraph has one governing function; an assertion, its justification, and its immediate consequence may remain together.
+4. Draft or revise within that edit extent so each paragraph has one governing function; an assertion, its justification, and its immediate consequence may remain together.
 5. Match verbs to the type and strength of evidence. When correcting an overclaim, state the nearest
    supported positive interpretation as well as the boundary; a denial alone is incomplete.
 6. Site each claim once and make later mentions references rather than re-arguments.
@@ -162,6 +161,7 @@ Apply the change when the user supplies source authorization, a corrected statem
 ### Review
 
 For an explicit line-by-line audit, return the passage, function, material risk, and action: `Keep`, `Rewrite`, `Compress`, `Delete`, or `Flag`. For an ordinary review, return only prioritized findings that materially improve the text.
+Choose the action within the authorized edit extent; its label grants no broader rewrite. For a request limited to a repeated ending, edit that ending and retain the preceding definitions and proof. Supplied context supports facts; it does not authorize inserting them into untouched text. Flag a necessary repair outside that extent separately and request broader authority. A paragraph-level revision may reorganize definitions and proof while preserving the register.
 
 - `Rewrite` preserves or source-authorizes the claim while changing framing or evidence language.
 - A statistical `Rewrite` must identify the supported scale or approximation and, when material, the
@@ -184,7 +184,7 @@ Return the revised text. Include a compact register or decision note only when i
 
 Return prose in the selected genre, with a compact register when traceability is material. If the requested passage would only repeat settled material, return `Omit` with a short reason. If the requested claim lacks governing evidence, return `Flag` and name what is needed instead of manufacturing prose.
 
-Before returning a Draft, cross-check the reader-facing prose—not the working register—against the supplied evidence for every material sample size, exclusion or missingness rate, unit, and analysis target. A value present only in the register is missing from the deliverable.
+Before returning a Draft, cross-check the reader-facing prose—not the working register—against the supplied evidence for every material sample size, exclusion or missingness rate, unit, and analysis target. A value present only in the register is missing from the deliverable. Check planned-versus-observed status and quantifiers as well: scheduled measurements do not imply complete recorded outcomes, and every completeness claim must agree with the supplied missingness.
 
 ### Analysis
 

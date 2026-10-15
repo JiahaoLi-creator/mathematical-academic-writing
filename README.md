@@ -1,6 +1,6 @@
 # Mathematical Academic Writing
 
-[![Version](https://img.shields.io/badge/version-v0.4.2-365E8D)](#validation)
+[![Version](https://img.shields.io/badge/version-v0.4.3-365E8D)](#validation)
 [![License: MIT](https://img.shields.io/badge/license-MIT-5F8C70)](LICENSE)
 [![Verify public core](https://github.com/JiahaoLi-creator/mathematical-academic-writing/actions/workflows/verify-core.yml/badge.svg)](https://github.com/JiahaoLi-creator/mathematical-academic-writing/actions/workflows/verify-core.yml)
 
@@ -99,7 +99,7 @@ removed when it only anticipates an unspecified objection or repeats a settled c
 
 ### From notebook revisions to a tested writing system
 
-The skill developed in six stages.
+The skill developed in seven stages.
 
 1. **Concrete failures became review cases.** Notebook passages supplied examples of defensive
    framing, repeated conclusions, notation drift, and evidence inflation.
@@ -126,6 +126,12 @@ The skill developed in six stages.
    optional Advanced Mathematical Statistics course-notes profile. New tests protect study design,
    p-values and intervals, finite-sample versus asymptotic claims, numerical retention, prediction,
    causation, robustness, and layered verification verdicts.
+
+7. **v0.4.3 added time-series and computational-statistical guidance.** A new time-series reference
+   distinguishes process assumptions, forecasting targets, information sets, spectral conventions,
+   filtering, and smoothing. Sampled readings from VanderPlas, Vershynin, and Shumway-Stoffer add
+   computational and high-dimensional explanation practices across 81 selected pages without
+   recalibrating the original 27-source corpus rates.
 
 The project was developed iteratively with Codex. Model-generated drafts supplied candidate text
 and failure cases; explicit rules, regression oracles, semantic reviews, and human release
@@ -316,7 +322,7 @@ More reusable prompts are available in [examples/quick-start.md](examples/quick-
 
 ### 从 notebook 修改发展为可测试系统
 
-整个 skill 经历了六个阶段：
+整个 skill 经历了七个阶段：
 
 1. **将实际失败转化为 review cases。** Notebook 中的防御型表达、重复结论、记号漂移和
    evidence inflation 成为最初的回归样本。
@@ -340,6 +346,10 @@ More reusable prompts are available in [examples/quick-start.md](examples/quick-
    推断与报告 safeguards，以及可选的 Advanced Mathematical Statistics 课程笔记 profile；
    新测试覆盖研究设计、p-value 与区间、有限样本与渐近结论、数值保留、预测、因果、robustness
    和分层 verification verdicts。
+
+7. **v0.4.3 新增时间序列与计算统计指引。** 新的时间序列 reference 区分过程假设、预测目标、
+   信息集、谱的约定以及 filtering 与 smoothing。VanderPlas、Vershynin 和 Shumway-Stoffer
+   的 81 页抽样细读补充计算与高维概率的解释规范，不重新校准原 27-source corpus 指标。
 
 该项目由 Codex 参与迭代：模型生成的稿件提供 candidate text 和失败案例，明确规则、回归
 oracle（预先锁定的预期结果）、语义审阅和人工 release 决定共同控制哪些修改可以进入正式版本。
@@ -607,46 +617,47 @@ statistical route.
 
 ## Validation | 验证
 
-The accepted v0.4.2 private release binds the selected cases below. v0.4.2 changes signed support
-documentation and release governance without changing the accepted v0.4.1 runtime or behavioral
-harness. It reuses the exact accepted eight result files through an explicit transitive
-governance-reuse protocol rather than representing them as fresh evaluation contexts.
+The accepted v0.4.3 private release is bound to `candidate-ebc94b8f4fc8faaa`. Its final
+governance-only repair reuses the exact eight accepted results from `candidate-1bd791e3e2bfbbfb`
+with unchanged runtime and behavioral hashes. The recorded mode is `governance_reuse`, not fresh
+evaluation contexts.
 
-私有 v0.4.2 release 绑定了下列测试结果。v0.4.2 更新签名支持文档与 release governance，未改变
-已接受的 v0.4.1 runtime 或 behavioral harness；它通过明确记录的 transitive governance-reuse
-protocol 复用完全相同的八个 accepted result files，并未将它们表述为新的评估上下文。
+已接受的私有 v0.4.3 release 绑定 `candidate-ebc94b8f4fc8faaa`。最后的治理修复在 runtime 和
+behavioral hashes 不变的情况下，精确复用 `candidate-1bd791e3e2bfbbfb` 的八份 accepted
+results；评估模式明确记录为 `governance_reuse`，不将复用上下文表述为全新独立评估。
 
 | Suite / 测试套件 | First-stage result / 一阶段结果 | Semantic result / 语义结果 |
 | --- | ---: | ---: |
-| Synthetic review / 合成审阅 | 40/40 decisions | 100/100 assertions |
+| Synthetic review / 合成审阅 | 51/51 decisions | 134/134 assertions |
 | MATH3015 notebook review / MATH3015 notebook 审阅 | 14/14 decisions | 29/29 assertions |
-| Evidence-grounded drafting / 证据约束的起草 | 13/13 cases | 53/53 assertions |
-| Source, derivation, and artifact verification / 来源、推导与 artifact 核验 | 26/26 verdicts | 87/87 assertions |
+| Evidence-grounded drafting / 证据约束的起草 | 14/14 cases | 59/59 assertions |
+| Source, derivation, and artifact verification / 来源、推导与 artifact 核验 | 34/34 verdicts | 118/118 assertions |
 
-The private release passed 125/125 main, 45/45 corpus, 42/42 candidate-state, 14/14 release-unit,
-and 21/21 signed-v2 mutation cases. These figures describe the private validation lineage; the
-public repository contains the runtime binding rather than the private corpus or blind oracles.
+The signed private release passed 347/347 main, 46/46 corpus, 92/92 candidate-state, 24/24
+release-unit, and 21/21 signed-release boundary cases. Its independent semantic assertions total
+340/340 in the bound accepted evaluation. These figures describe private validation lineage;
+the public check does not rerun the private corpus, blind cases, or semantic review.
 
-同一私有发布版本通过了 125/125 个 main、45/45 个 corpus、42/42 个 candidate-state、14/14 个
-release-unit 和 21/21 个 signed-v2 mutation cases。公开仓库保存 runtime binding；私有 corpus
-和 blind oracles 保留在私有验证环境中。
+该签名私有 release 通过了 347/347 main、46/46 corpus、92/92 candidate-state、24/24 release-unit
+以及 21/21 signed-release boundary cases，绑定的 accepted evaluation 含 340/340 语义断言。
+这些数字描述私有验证 lineage；公开检查不重跑私有 corpus、blind cases 或 semantic review。
 
-Fifteen public runtime files are byte-identical to the signed private runtime. The public source map
-removes two local textbook links while preserving the bibliographic text and routing rules. This
-narrow sanitization is recorded in the public provenance.
+Sixteen public runtime files are byte-identical to the signed private runtime. The source map
+removes three local PDF links while preserving every link label, bibliography, locator, and routing
+rule. This is the only public runtime transformation and is explicitly bound in provenance.
 
-十五个公开 runtime 文件与签名私有 runtime 逐字节一致；公开版 source map 只移除了两个本地教材
-链接，书目信息与路由规则保持不变。该窄范围净化记录在 public provenance 中。
+十六个公开 runtime 文件与签名私有 runtime 逐字节一致；source map 仅去掉三个本地 PDF 链接，
+保留所有链接文字、书目、定位与路由规则。它是唯一的公开 runtime 变换，并已由 provenance 绑定。
 
 ```text
 Public-safe core aggregate SHA-256
-07a8468980749d06e2d3ece451910ff4a2de91505153fcb0f4d6403f9a5dfe7f
+6334a3dfc41dbbf721504f42e94219a7742c6aa3c18942f66ecef7064c5e6a55
 
 Accepted private runtime skill SHA-256
-512fa76e8976f571129dd178400aa03af0d6426d7adf6331007dd206df212479
+938ebf9db84b4980bb19888e5a2c418f5a4787a80e489831c7d8d51f325e2f7b
 
 Signed private manifest SHA-256
-99dff71ef6df740b31b4852c1da308f4033ca0495058090f7be2693a0943f0ef
+802764456abfb58ad0f7b50218d6425e25e0231bf4bb8b0a7cb405fddd7d0e0d
 ```
 
 Run the public check locally:
@@ -657,12 +668,12 @@ Run the public check locally:
 python3 -B scripts/verify_public_core.py
 ```
 
-The check verifies the exact public file allowlist, regular-file and link constraints, the sixteen
+The check verifies the exact public file allowlist, regular-file and link constraints, the seventeen
 core file hashes, their ordered aggregate, the recorded sanitization boundary, internal Markdown
 links, and a limited credential/path pattern scan. See
 [`provenance/public-release.v1.json`](provenance/public-release.v1.json) for the public binding.
 
-该检查核对公开文件 allowlist、普通文件与链接约束、十六个 core 文件 hash、它们按顺序计算的
+该检查核对公开文件 allowlist、普通文件与链接约束、十七个 core 文件 hash、它们按顺序计算的
 aggregate hash、已记录的净化边界、内部 Markdown links，以及有限的 credential/path pattern。公开 binding 记录在
 [`provenance/public-release.v1.json`](provenance/public-release.v1.json)。
 

@@ -98,7 +98,7 @@ Preserve negation in definitions, theorems, counterexamples, logical distinction
 
 ## Paragraph reconstruction
 
-After revising a defensive sentence, rebuild the paragraph around one main job:
+When paragraph-level revision is authorized, rebuild the paragraph around one main job:
 
 1. open with the governing object, question, relation, or claim;
 2. supply the assumption, calculation, evidence, or explanation it needs;
@@ -106,6 +106,9 @@ After revising a defensive sentence, rebuild the paragraph around one main job:
 4. finish when that job is complete.
 
 Replace stock phrases with the actual mathematical subject and relation.
+
+For a local deletion or compression, change only the authorized passage; paragraph reconstruction
+is a separate, broader edit.
 
 ## Warning patterns
 

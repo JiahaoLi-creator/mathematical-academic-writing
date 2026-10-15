@@ -1,5 +1,21 @@
 # Changelog
 
+## v0.4.3 — 2026-10-15
+
+- Added general time-series writing guidance for stationarity and dependence, model conventions,
+  forecasting targets and information sets, spectra, filtering, and smoothing.
+- Added traceable qualitative readings from VanderPlas, Vershynin, and Shumway-Stoffer: 81 sampled
+  pages, separate from the unchanged historical 27-source rates.
+- Strengthened edit-scope, planned-versus-observed data, numerical-retention, claim-target, and
+  conditional prediction safeguards in the accepted runtime.
+- Bound the seventeen-file public core to signed private candidate `candidate-ebc94b8f4fc8faaa`.
+  Sixteen files are byte-identical; the source map removes exactly three local PDF links.
+- Preserved the separate candidate, corpus-approval, signing, installation, and publication gates.
+  The final governance repair uses explicitly recorded evaluation reuse, not fresh 4+4 contexts.
+
+The private corpus, copyrighted source files, course assets, blind cases, evaluation outputs,
+approvals, keys, trust configuration, and full private release harness remain excluded.
+
 ## v0.4.2 — 2026-09-01
 
 - Reissued the unchanged sixteen-file runtime core from the accepted signed private candidate

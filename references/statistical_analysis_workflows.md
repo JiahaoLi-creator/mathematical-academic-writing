@@ -93,6 +93,7 @@ after looking at the data, disclose the change and calibrate the claim as explor
 | Survival and event-time analysis | Time origin, event definition, censoring and competing risks, risk sets, follow-up, model scale, and time-varying effects. A hazard ratio is not generally a risk ratio. |
 | Causal analysis | Causal estimand, assignment or design, identification assumptions, positivity and overlap, estimator, interference or censoring where relevant, and sensitivity to unmeasured bias. |
 | Prediction and statistical learning | Outcome and horizon, split unit, train/tune/test separation, preprocessing within resampling, metric, imbalance, calibration, uncertainty, subgroup performance, and deployment shift. |
+| High-dimensional and nonasymptotic analysis | Dimension and sample size, tail and dependence assumptions, centering or isotropy, estimator and norm, tail parameter, constant dependencies, and expectation versus high-probability conclusions. State the bound before deriving sample complexity. |
 | Bayesian analysis | Likelihood, prior, posterior target, computation, convergence diagnostics, posterior predictive checks, prior/model sensitivity, and decision rule if used. |
 | Robust, nonparametric, and resampling methods | Target under departure, resampling or permutation unit, exchangeability, robustness notion, tuning, finite-sample limitations, and the contrast with the reference procedure. |
 
@@ -114,10 +115,13 @@ model depending on how observations were generated.
   assumption; this is separate from estimating a probability-scale contrast.
 - **Missing data:** report missingness by variable and analysis stage, the analysis population, the
   assumed mechanism, and the handling method. Complete-case or imputed results do not automatically
-  represent excluded units; sensitivity is needed when conclusions depend on unverifiable assumptions.
-  Select handling and sensitivity checks for the estimand, design, observed pattern, and assumed
-  mechanism. Unless that support is supplied, present weighting, imputation, and sensitivity as
-  conditional alternatives rather than a checklist that must be applied jointly.
+  represent excluded units. Before a proposed extension that depends on unverifiable missingness or
+  selection assumptions, request those assumptions explicitly and targeted sensitivity to plausible
+  departures. Choose primary handling for the estimand, design, observed pattern, and assumed
+  mechanism; weighting and imputation are conditional method options, not jointly mandatory steps.
+  Sensitivity assesses dependence of the conclusion on assumptions; it does not replace justified
+  primary handling or by itself identify the population target. A description confined to observed
+  complete cases does not by itself require a population-extension sensitivity analysis.
 - **Selection and multiplicity:** distinguish prespecified from data-selected outcomes, subgroups,
   cut points, transformations, and models. Account for the selection in uncertainty or qualify the
   conclusion as exploratory.
