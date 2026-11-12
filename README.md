@@ -1,6 +1,6 @@
 # Mathematical Academic Writing
 
-[![Version](https://img.shields.io/badge/version-v0.4.3-365E8D)](#validation)
+[![Version](https://img.shields.io/badge/version-v0.4.4-365E8D)](#validation)
 [![License: MIT](https://img.shields.io/badge/license-MIT-5F8C70)](LICENSE)
 [![Verify public core](https://github.com/JiahaoLi-creator/mathematical-academic-writing/actions/workflows/verify-core.yml/badge.svg)](https://github.com/JiahaoLi-creator/mathematical-academic-writing/actions/workflows/verify-core.yml)
 
@@ -99,7 +99,7 @@ removed when it only anticipates an unspecified objection or repeats a settled c
 
 ### From notebook revisions to a tested writing system
 
-The skill developed in seven stages.
+The skill developed in eight stages.
 
 1. **Concrete failures became review cases.** Notebook passages supplied examples of defensive
    framing, repeated conclusions, notation drift, and evidence inflation.
@@ -132,6 +132,11 @@ The skill developed in seven stages.
    filtering, and smoothing. Sampled readings from VanderPlas, Vershynin, and Shumway-Stoffer add
    computational and high-dimensional explanation practices across 81 selected pages without
    recalibrating the original 27-source corpus rates.
+
+8. **v0.4.4 added optional ARS coordination and stronger source boundaries.** The skill separates
+   research and citation workflows from mathematical/statistical verification, keeps citation syntax,
+   source identity, and claim support distinct, and prevents quoted material or absent evidence from
+   being treated as expanded authority or proof of nonexecution. ARS remains optional.
 
 The project was developed iteratively with Codex. Model-generated drafts supplied candidate text
 and failure cases; explicit rules, regression oracles, semantic reviews, and human release
@@ -322,7 +327,7 @@ More reusable prompts are available in [examples/quick-start.md](examples/quick-
 
 ### 从 notebook 修改发展为可测试系统
 
-整个 skill 经历了七个阶段：
+整个 skill 经历了八个阶段：
 
 1. **将实际失败转化为 review cases。** Notebook 中的防御型表达、重复结论、记号漂移和
    evidence inflation 成为最初的回归样本。
@@ -350,6 +355,10 @@ More reusable prompts are available in [examples/quick-start.md](examples/quick-
 7. **v0.4.3 新增时间序列与计算统计指引。** 新的时间序列 reference 区分过程假设、预测目标、
    信息集、谱的约定以及 filtering 与 smoothing。VanderPlas、Vershynin 和 Shumway-Stoffer
    的 81 页抽样细读补充计算与高维概率的解释规范，不重新校准原 27-source corpus 指标。
+
+8. **v0.4.4 新增可选 ARS 协作与更明确的来源边界。** 将研究和引文工作流与数学、统计核验分工，
+   区分引文格式、来源身份及主张支持；不把引用材料当成扩大权限的指令，也不把证据缺失当成未执行的证明。
+   ARS 仍为可选依赖。
 
 该项目由 Codex 参与迭代：模型生成的稿件提供 candidate text 和失败案例，明确规则、回归
 oracle（预先锁定的预期结果）、语义审阅和人工 release 决定共同控制哪些修改可以进入正式版本。
@@ -617,30 +626,30 @@ statistical route.
 
 ## Validation | 验证
 
-The accepted v0.4.3 private release is bound to `candidate-ebc94b8f4fc8faaa`. Its final
-governance-only repair reuses the exact eight accepted results from `candidate-1bd791e3e2bfbbfb`
-with unchanged runtime and behavioral hashes. The recorded mode is `governance_reuse`, not fresh
-evaluation contexts.
+The accepted, signed v0.4.4 private release is bound to `candidate-3aab2c75f512f30c`.
+Its accepted evaluation on 2026-10-24 used four fresh Stage 1 contexts and four separate fresh
+Stage 2 contexts. This public release derives from that exact signed runtime; publication checks
+do not constitute a new 4+4 behavioral evaluation.
 
-已接受的私有 v0.4.3 release 绑定 `candidate-ebc94b8f4fc8faaa`。最后的治理修复在 runtime 和
-behavioral hashes 不变的情况下，精确复用 `candidate-1bd791e3e2bfbbfb` 的八份 accepted
-results；评估模式明确记录为 `governance_reuse`，不将复用上下文表述为全新独立评估。
+已接受并签名的私有 v0.4.4 release 绑定 `candidate-3aab2c75f512f30c`。其 2026-10-24 的
+accepted evaluation 使用四个全新 Stage 1 上下文和另外四个全新 Stage 2 上下文。本次公开包
+派生自该精确签名 runtime；发布检查不等于重新进行一次 4+4 行为评估。
 
 | Suite / 测试套件 | First-stage result / 一阶段结果 | Semantic result / 语义结果 |
 | --- | ---: | ---: |
-| Synthetic review / 合成审阅 | 51/51 decisions | 134/134 assertions |
+| Synthetic review / 合成审阅 | 51/51 decisions | 135/135 assertions |
 | MATH3015 notebook review / MATH3015 notebook 审阅 | 14/14 decisions | 29/29 assertions |
 | Evidence-grounded drafting / 证据约束的起草 | 14/14 cases | 59/59 assertions |
-| Source, derivation, and artifact verification / 来源、推导与 artifact 核验 | 34/34 verdicts | 118/118 assertions |
+| Source, derivation, and artifact verification / 来源、推导与 artifact 核验 | 37/37 verdicts | 129/129 assertions |
 
-The signed private release passed 347/347 main, 46/46 corpus, 92/92 candidate-state, 24/24
-release-unit, and 21/21 signed-release boundary cases. Its independent semantic assertions total
-340/340 in the bound accepted evaluation. These figures describe private validation lineage;
-the public check does not rerun the private corpus, blind cases, or semantic review.
+The signed validation records bind 116 first-stage cases and 352/352 semantic assertions,
+alongside 347/347 main, 46/46 corpus, 92/92 candidate-state, 24/24 release-unit, and 21/21
+signed-release boundary controls. These figures describe the accepted private validation lineage.
+The public verifier does not rerun the private corpus, blind cases, or independent semantic review.
 
-该签名私有 release 通过了 347/347 main、46/46 corpus、92/92 candidate-state、24/24 release-unit
-以及 21/21 signed-release boundary cases，绑定的 accepted evaluation 含 340/340 语义断言。
-这些数字描述私有验证 lineage；公开检查不重跑私有 corpus、blind cases 或 semantic review。
+签名验证记录绑定 116 个一阶段案例、352/352 语义断言，以及 347/347 main、46/46 corpus、
+92/92 candidate-state、24/24 release-unit 和 21/21 signed-release boundary controls。
+这些数字描述 accepted 私有验证 lineage；公开 verifier 不重跑私有 corpus、blind cases 或独立语义审查。
 
 Sixteen public runtime files are byte-identical to the signed private runtime. The source map
 removes three local PDF links while preserving every link label, bibliography, locator, and routing
@@ -651,13 +660,13 @@ rule. This is the only public runtime transformation and is explicitly bound in 
 
 ```text
 Public-safe core aggregate SHA-256
-6334a3dfc41dbbf721504f42e94219a7742c6aa3c18942f66ecef7064c5e6a55
+c3572a0d381bf1e37e92c471073acc6a9d62061ab09cd38d34738000c351f12a
 
 Accepted private runtime skill SHA-256
-938ebf9db84b4980bb19888e5a2c418f5a4787a80e489831c7d8d51f325e2f7b
+0a2576bf66344ba7bff07b140a559dacbb398980c7111a9a060fc24f0d3b5b13
 
 Signed private manifest SHA-256
-802764456abfb58ad0f7b50218d6425e25e0231bf4bb8b0a7cb405fddd7d0e0d
+97b8ace3df8c8dac44dafd174d2191316f748d3eff4fa041f33f22d5fd2d9bd7
 ```
 
 Run the public check locally:

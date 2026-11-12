@@ -2,6 +2,18 @@
 
 Use this reference for article-scale drafting, revision, review, referee reports, and responses. The supplied sources govern factual and citation claims.
 
+## Optional ARS coordination
+
+When both skills apply, use `academic-research-suite` for the requested research, paper,
+review, or specialized citation workflow, and this skill for mathematical and statistical
+writing and verification. Preserve the user's selected mode, edit extent, and stopping point.
+An ARS plan, review, or handoff does not authorize new claims, broader edits, or a later stage.
+
+Read the installed ARS router and only the selected workflow's required resources when that
+capability is needed. ARS is optional: continue work this skill can support if it is absent,
+and identify only the unavailable checks. Never report an ARS check as executed from a
+workflow description or an earlier result.
+
 ## Abstract
 
 Build the abstract in this order when the evidence supports each part:
@@ -33,6 +45,25 @@ Use “we prove” only for a proved result, “we derive” for an exact deriva
 - Preserve the difference between “first,” “extends,” “applies,” “compares,” and “is related to.”
 
 Literature discovery is a separate research task. Apply this skill once the relevant sources or verified notes are available.
+
+### Optional ARS citation audit
+
+For a requested citation-format or reference-existence audit that benefits from ARS, read
+the installed `academic-research-suite` router, its `academic-paper` `citation-check`
+workflow, and the required citation-compliance resources. Follow that router's lookup and
+consent boundaries. If ARS is unavailable, perform the checks supported by the supplied
+material and identify the missing checks without claiming ARS execution.
+
+Keep visible citation syntax, source existence and identity, and support for the cited claim
+separate. An unfamiliar DOI prefix alone establishes neither fabrication nor a broken
+reference. Without an actual lookup or source record, leave resolution unchecked; a valid
+metadata record still does not establish support for a theorem or empirical claim.
+
+For Chinese APA 7 only when that style is requested or required by the venue, also read
+the current ARS Chinese citation guide. Apply author and venue requirements first, and keep
+in-text abbreviation separate from reference-list author fields. Do not impose that style
+on other Chinese-language work or import generic source-age or citation-density thresholds
+as mathematical validity gates.
 
 ## Theorems, proofs, and methods
 

@@ -1,12 +1,12 @@
 {
   "core": {
     "aggregate_algorithm": "sha256-path-nul-bytes-nul-v1",
-    "aggregate_sha256": "6334a3dfc41dbbf721504f42e94219a7742c6aa3c18942f66ecef7064c5e6a55",
+    "aggregate_sha256": "c3572a0d381bf1e37e92c471073acc6a9d62061ab09cd38d34738000c351f12a",
     "files": [
       {
         "path": "SKILL.md",
-        "sha256": "0173fe81c1d394f8050e5f214c3ff76873d3077b3d9de10af9a5912069b99578",
-        "size": 18155
+        "sha256": "6245c3a1adafd4969125d044f183b046ca2f339037005619252fb72ea7ae9a14",
+        "size": 18426
       },
       {
         "path": "agents/openai.yaml",
@@ -20,8 +20,8 @@
       },
       {
         "path": "references/research_article_workflows.md",
-        "sha256": "5fb143da028265531eb3e9c1c18390afc0f68adb8c2add4c42f048437f616f90",
-        "size": 3586
+        "sha256": "3875a1aea1668ef6d98d19bf8ecdab97ba6448fdb3a7453d18fa4d36a5d66318",
+        "size": 5510
       },
       {
         "path": "references/mathematical_integrity.md",
@@ -50,8 +50,8 @@
       },
       {
         "path": "references/source_and_derivation_audit.md",
-        "sha256": "e0e23a07cbb1e9c66356a9d74de82d86ad84add10d9df5230f7e6ecca42c3be4",
-        "size": 7040
+        "sha256": "7a7bc0db923c0cf352276b8045729ed5b272de4fad66161ae4b4230eb56dafd3",
+        "size": 7790
       },
       {
         "path": "references/anti_defensive_audit.md",
@@ -93,7 +93,7 @@
   "distribution": {
     "name": "mathematical-academic-writing",
     "scope": "public_runtime",
-    "version": "0.4.3"
+    "version": "0.4.4"
   },
   "excluded_material": [
     "source_pdfs",
@@ -107,15 +107,15 @@
     "signed_private_release_metadata"
   ],
   "private_validation_lineage": {
-    "behavioral_harness_sha256": "6ad1bb8da1770d69e28d281a19cee6a98788d53b4b66da3884cfadb04b67eeba",
-    "candidate_id": "candidate-ebc94b8f4fc8faaa",
+    "behavioral_harness_sha256": "553ac3a1a3d85d578d3dafd7639d1d1c51e86b5ebe132a16ce3a52f362167109",
+    "candidate_id": "candidate-3aab2c75f512f30c",
     "candidate_identity_algorithm": "sha256-skill-behavioral-governance-nul-v2",
-    "manifest_sha256": "802764456abfb58ad0f7b50218d6425e25e0231bf4bb8b0a7cb405fddd7d0e0d",
-    "manifest_signature_sha256": "7ad2e4dbbf541e6d0f3b76030ba491213f35b9e55f158729ed5cb415db694981",
+    "manifest_sha256": "97b8ace3df8c8dac44dafd174d2191316f748d3eff4fa041f33f22d5fd2d9bd7",
+    "manifest_signature_sha256": "84f841d2d4ba1814ac8920e7de93acb51509906a8c52ea96affa8e810034dc6b",
     "note": "Lineage anchors only; private evidence, signatures, and trust configuration are not reproduced in this public repository.",
-    "payload_sha256": "cecb295b68be1b1b774f27b5e1f375daf9d7f18b943debb3747c55b448725d7c",
-    "release_governance_sha256": "ff1d427b5eb236f9b295064581feb5ac91e5e0845d2e6f24cac84a065a5a831a",
-    "runtime_skill_sha256": "938ebf9db84b4980bb19888e5a2c418f5a4787a80e489831c7d8d51f325e2f7b",
+    "payload_sha256": "5b82307cfda33e5c0b21c2a8e473af4a69f343f0b541dbee4e6edf108e8d15de",
+    "release_governance_sha256": "015a3713bf4d905edca502e1190e6996606a9aa14459c882be878bb2ebd59b69",
+    "runtime_skill_sha256": "0a2576bf66344ba7bff07b140a559dacbb398980c7111a9a060fc24f0d3b5b13",
     "status": "verified_signed_private_release"
   },
   "public_sanitization": {

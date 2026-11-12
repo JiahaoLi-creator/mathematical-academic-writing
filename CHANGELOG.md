@@ -1,5 +1,22 @@
 # Changelog
 
+## v0.4.4 — 2026-11-12
+
+- Added optional ARS coordination for research, paper, review, and specialized citation workflows,
+  while preserving mathematical/statistical verification and user-selected scope.
+- Separated citation formatting, source existence and identity, DOI resolution, and claim support;
+  Chinese APA 7 guidance applies only when that style is requested or required.
+- Strengthened the boundary between source material and action authority, and between missing
+  evidence and a claim that an analysis was not performed.
+- Derived the seventeen-file public core from accepted signed private candidate
+  `candidate-3aab2c75f512f30c`. Sixteen files are byte-identical; only three local PDF link targets
+  are removed from the source map.
+- Bound the prior accepted fresh 4+4 evaluation (116 cases; 352/352 semantic assertions) without
+  presenting public packaging checks as new behavioral or semantic evaluation.
+
+Private source material, blind cases, evaluation outputs, approval/signature files, keys, trust
+configuration, and the complete private release harness remain excluded.
+
 ## v0.4.3 — 2026-10-15
 
 - Added general time-series writing guidance for stationarity and dependence, model conventions,

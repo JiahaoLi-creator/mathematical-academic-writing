@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify the public-safe v0.4.3 runtime and its seventeen-file core binding."""
+"""Verify the public-safe v0.4.4 runtime and its seventeen-file core binding."""
 
 from __future__ import annotations
 
@@ -35,7 +35,7 @@ EXPECTED_CORE_PATHS = ('SKILL.md',
  'project_profiles/math3015.md',
  'project_profiles/advanced_mathematical_statistics.md',
  'project_profiles/quantitative_finance.md')
-EXPECTED_CORE_SHA256 = '6334a3dfc41dbbf721504f42e94219a7742c6aa3c18942f66ecef7064c5e6a55'
+EXPECTED_CORE_SHA256 = 'c3572a0d381bf1e37e92c471073acc6a9d62061ab09cd38d34738000c351f12a'
 EXPECTED_EXCLUDED_MATERIAL = [
     "source_pdfs",
     "extracted_or_normalized_corpus_text",
@@ -47,16 +47,16 @@ EXPECTED_EXCLUDED_MATERIAL = [
     "signing_keys_and_trust_configuration",
     "signed_private_release_metadata",
 ]
-EXPECTED_PRIVATE_LINEAGE = {'behavioral_harness_sha256': '6ad1bb8da1770d69e28d281a19cee6a98788d53b4b66da3884cfadb04b67eeba',
- 'candidate_id': 'candidate-ebc94b8f4fc8faaa',
+EXPECTED_PRIVATE_LINEAGE = {'behavioral_harness_sha256': '553ac3a1a3d85d578d3dafd7639d1d1c51e86b5ebe132a16ce3a52f362167109',
+ 'candidate_id': 'candidate-3aab2c75f512f30c',
  'candidate_identity_algorithm': 'sha256-skill-behavioral-governance-nul-v2',
- 'manifest_sha256': '802764456abfb58ad0f7b50218d6425e25e0231bf4bb8b0a7cb405fddd7d0e0d',
- 'manifest_signature_sha256': '7ad2e4dbbf541e6d0f3b76030ba491213f35b9e55f158729ed5cb415db694981',
+ 'manifest_sha256': '97b8ace3df8c8dac44dafd174d2191316f748d3eff4fa041f33f22d5fd2d9bd7',
+ 'manifest_signature_sha256': '84f841d2d4ba1814ac8920e7de93acb51509906a8c52ea96affa8e810034dc6b',
  'note': 'Lineage anchors only; private evidence, signatures, and trust configuration are not '
          'reproduced in this public repository.',
- 'payload_sha256': 'cecb295b68be1b1b774f27b5e1f375daf9d7f18b943debb3747c55b448725d7c',
- 'release_governance_sha256': 'ff1d427b5eb236f9b295064581feb5ac91e5e0845d2e6f24cac84a065a5a831a',
- 'runtime_skill_sha256': '938ebf9db84b4980bb19888e5a2c418f5a4787a80e489831c7d8d51f325e2f7b',
+ 'payload_sha256': '5b82307cfda33e5c0b21c2a8e473af4a69f343f0b541dbee4e6edf108e8d15de',
+ 'release_governance_sha256': '015a3713bf4d905edca502e1190e6996606a9aa14459c882be878bb2ebd59b69',
+ 'runtime_skill_sha256': '0a2576bf66344ba7bff07b140a559dacbb398980c7111a9a060fc24f0d3b5b13',
  'status': 'verified_signed_private_release'}
 EXPECTED_PUBLIC_SANITIZATION = {'changes': [{'operation': 'remove_local_relative_links',
               'path': 'references/statistical_source_map.md',
@@ -170,7 +170,7 @@ def load_provenance() -> dict[str, Any]:
     if distribution != {
         "name": "mathematical-academic-writing",
         "scope": "public_runtime",
-        "version": "0.4.3",
+        "version": "0.4.4",
     }:
         raise ValidationError("unexpected distribution identity")
     if value["excluded_material"] != EXPECTED_EXCLUDED_MATERIAL:
@@ -253,7 +253,7 @@ def verify_core(provenance: dict[str, Any], files: dict[str, Path]) -> str:
     if not isinstance(expected, str) or HEX64.fullmatch(expected) is None:
         raise ValidationError("invalid aggregate SHA-256")
     if expected != EXPECTED_CORE_SHA256:
-        raise ValidationError("provenance does not bind the accepted public-safe v0.4.3 core")
+        raise ValidationError("provenance does not bind the accepted public-safe v0.4.4 core")
     if observed != expected:
         raise ValidationError(f"core aggregate mismatch: {observed} != {expected}")
     return observed
