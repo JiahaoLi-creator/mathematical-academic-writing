@@ -1,6 +1,6 @@
 # Public Maintenance Boundary
 
-This repository is the public runtime distribution of the accepted v0.4.4 skill. It does not
+This repository is the public runtime distribution of the accepted v0.4.5 skill. It does not
 contain the full private release harness.
 
 Source PDFs, extracted text, evidence registries, blind oracles, source-derived notebook fixtures,
@@ -23,14 +23,21 @@ Changes to `SKILL.md`, `agents/openai.yaml`, `references/`, or `project_profiles
 accepted private candidate and a new public provenance record. Documentation-only changes may
 retain the core binding only while all seventeen runtime files remain byte-identical.
 
-The public v0.4.4 runtime is derived from accepted, signed private candidate
-`candidate-3aab2c75f512f30c`. Sixteen files are byte-identical. The sole sanitization removes three
+The public v0.4.5 runtime is derived from accepted, signed private candidate
+`candidate-593e5f3b81f1cdce`. Sixteen files are byte-identical. The sole sanitization removes three
 local PDF link targets from `references/statistical_source_map.md`, preserving link labels,
 bibliographic facts, locators, and routing rules. The exact transformation is bound in provenance.
 No additional runtime alteration is authorized by that path-sanitization policy.
 
-The accepted private candidate has its own fresh 4+4 evaluation from 2026-10-24. Public packaging
-checks validate the derivation and publication boundary; they are not a new behavioral evaluation.
+The private candidate is governance-only and explicitly reuses the exact accepted v0.4.4
+4+4 sample; both context-freshness fields remain false. Its private checker/provenance repairs
+are not distributed here. Public packaging checks are not a new behavioral evaluation.
 
 The JSON files under `tests/` are notice-only placeholders. They contain no private cases,
 expected answers, evaluator outputs, or source-derived fixtures.
+
+Public packaging revision r2 repairs the public-only Markdown destination scan for ordinary
+reference definitions. It conservatively checks all matching one-line labels with same/next-line
+destinations, including unused definitions and code examples; see README for syntax limits.
+This is not full CommonMark or HTML rendering, external-URL checking, or an exhaustive secret scan.
+The failed r1 artifact and independent raw review remain outside this public distribution.

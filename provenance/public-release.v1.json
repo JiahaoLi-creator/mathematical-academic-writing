@@ -93,7 +93,7 @@
   "distribution": {
     "name": "mathematical-academic-writing",
     "scope": "public_runtime",
-    "version": "0.4.4"
+    "version": "0.4.5"
   },
   "excluded_material": [
     "source_pdfs",
@@ -108,13 +108,13 @@
   ],
   "private_validation_lineage": {
     "behavioral_harness_sha256": "553ac3a1a3d85d578d3dafd7639d1d1c51e86b5ebe132a16ce3a52f362167109",
-    "candidate_id": "candidate-3aab2c75f512f30c",
+    "candidate_id": "candidate-593e5f3b81f1cdce",
     "candidate_identity_algorithm": "sha256-skill-behavioral-governance-nul-v2",
-    "manifest_sha256": "97b8ace3df8c8dac44dafd174d2191316f748d3eff4fa041f33f22d5fd2d9bd7",
-    "manifest_signature_sha256": "84f841d2d4ba1814ac8920e7de93acb51509906a8c52ea96affa8e810034dc6b",
+    "manifest_sha256": "0ae93d3e47a05d9de9dec948168a46716df97a2d44aa55ca6554f9e7a916fe06",
+    "manifest_signature_sha256": "edcbdffdf70e6d64974360632bb40e11c06bc66b8a3329699bbac0c2d7a983bc",
     "note": "Lineage anchors only; private evidence, signatures, and trust configuration are not reproduced in this public repository.",
-    "payload_sha256": "5b82307cfda33e5c0b21c2a8e473af4a69f343f0b541dbee4e6edf108e8d15de",
-    "release_governance_sha256": "015a3713bf4d905edca502e1190e6996606a9aa14459c882be878bb2ebd59b69",
+    "payload_sha256": "aeb41fc16c74b282228dcbf3fc59ee62412380b5843c6da7a253d89e8a8593cc",
+    "release_governance_sha256": "1ce8f47a925f4898c698ad2cd4f607754431e1e80cf13af784ccd12c330dcfb3",
     "runtime_skill_sha256": "0a2576bf66344ba7bff07b140a559dacbb398980c7111a9a060fc24f0d3b5b13",
     "status": "verified_signed_private_release"
   },

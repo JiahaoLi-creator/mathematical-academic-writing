@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Verify the public-safe v0.4.4 runtime and its seventeen-file core binding."""
+"""Verify public-safe v0.4.5, public packaging r2; no renderer-conformance claim."""
 
 from __future__ import annotations
 
 import hashlib
+import html
 import json
 import os
 import re
@@ -48,14 +49,14 @@ EXPECTED_EXCLUDED_MATERIAL = [
     "signed_private_release_metadata",
 ]
 EXPECTED_PRIVATE_LINEAGE = {'behavioral_harness_sha256': '553ac3a1a3d85d578d3dafd7639d1d1c51e86b5ebe132a16ce3a52f362167109',
- 'candidate_id': 'candidate-3aab2c75f512f30c',
+ 'candidate_id': 'candidate-593e5f3b81f1cdce',
  'candidate_identity_algorithm': 'sha256-skill-behavioral-governance-nul-v2',
- 'manifest_sha256': '97b8ace3df8c8dac44dafd174d2191316f748d3eff4fa041f33f22d5fd2d9bd7',
- 'manifest_signature_sha256': '84f841d2d4ba1814ac8920e7de93acb51509906a8c52ea96affa8e810034dc6b',
+ 'manifest_sha256': '0ae93d3e47a05d9de9dec948168a46716df97a2d44aa55ca6554f9e7a916fe06',
+ 'manifest_signature_sha256': 'edcbdffdf70e6d64974360632bb40e11c06bc66b8a3329699bbac0c2d7a983bc',
  'note': 'Lineage anchors only; private evidence, signatures, and trust configuration are not '
          'reproduced in this public repository.',
- 'payload_sha256': '5b82307cfda33e5c0b21c2a8e473af4a69f343f0b541dbee4e6edf108e8d15de',
- 'release_governance_sha256': '015a3713bf4d905edca502e1190e6996606a9aa14459c882be878bb2ebd59b69',
+ 'payload_sha256': 'aeb41fc16c74b282228dcbf3fc59ee62412380b5843c6da7a253d89e8a8593cc',
+ 'release_governance_sha256': '1ce8f47a925f4898c698ad2cd4f607754431e1e80cf13af784ccd12c330dcfb3',
  'runtime_skill_sha256': '0a2576bf66344ba7bff07b140a559dacbb398980c7111a9a060fc24f0d3b5b13',
  'status': 'verified_signed_private_release'}
 EXPECTED_PUBLIC_SANITIZATION = {'changes': [{'operation': 'remove_local_relative_links',
@@ -122,6 +123,16 @@ PRIVATE_KEY_MARKERS = tuple(
     for key_type in ("OPENSSH", "RSA", "EC", "DSA")
 )
 MARKDOWN_LINK_PATTERN = re.compile(r"!?\[[^\]]*\]\((<[^>]+>|[^)\s]+)")
+# A conservative source scan, not a CommonMark block/inline parser. Check every
+# matching definition (also unused or in examples) so full, collapsed and shortcut
+# reference usages cannot bypass the destination policy. Labels stay on one line;
+# a destination may be on the next line. Containers/multiline labels need review.
+MARKDOWN_REFERENCE_PATTERN = re.compile(
+    r"^ {0,3}\[(?:\\[^\r\n]|[^\[\]\\\r\n])+\]:[ \t]*(?:\r?\n[ \t]*)?"
+    r"(<[^<>\r\n]*>|[^\s<>]+)",
+    re.MULTILINE,
+)
+MARKDOWN_ESCAPE_PATTERN = re.compile(r"\\([!\"#$%&'()*+,\-./:;<=>?@\[\\\]^_`{|}~])")
 
 
 class ValidationError(RuntimeError):
@@ -170,7 +181,7 @@ def load_provenance() -> dict[str, Any]:
     if distribution != {
         "name": "mathematical-academic-writing",
         "scope": "public_runtime",
-        "version": "0.4.4",
+        "version": "0.4.5",
     }:
         raise ValidationError("unexpected distribution identity")
     if value["excluded_material"] != EXPECTED_EXCLUDED_MATERIAL:
@@ -253,7 +264,7 @@ def verify_core(provenance: dict[str, Any], files: dict[str, Path]) -> str:
     if not isinstance(expected, str) or HEX64.fullmatch(expected) is None:
         raise ValidationError("invalid aggregate SHA-256")
     if expected != EXPECTED_CORE_SHA256:
-        raise ValidationError("provenance does not bind the accepted public-safe v0.4.4 core")
+        raise ValidationError("provenance does not bind the accepted public-safe v0.4.5 core")
     if observed != expected:
         raise ValidationError(f"core aggregate mismatch: {observed} != {expected}")
     return observed
@@ -282,13 +293,17 @@ def verify_internal_markdown_links(files: dict[str, Path]) -> int:
         if path.suffix != ".md":
             continue
         text = path.read_text(encoding="utf-8")
-        for match in MARKDOWN_LINK_PATTERN.finditer(text):
-            target = match.group(1)
+        targets = [match.group(1) for pattern in
+                   (MARKDOWN_LINK_PATTERN, MARKDOWN_REFERENCE_PATTERN)
+                   for match in pattern.finditer(text)]
+        for target in targets:
             if target.startswith("<") and target.endswith(">"):
                 target = target[1:-1]
-            if target.startswith(("#", "https://", "http://", "mailto:")):
+            target = MARKDOWN_ESCAPE_PATTERN.sub(r"\1", html.unescape(target))
+            lowered = target.lower()
+            if target.startswith("#") or lowered.startswith(("https://", "http://", "mailto:")):
                 continue
-            if "://" in target or target.startswith(("data:", "javascript:")):
+            if re.match(r"[a-z][a-z0-9+.-]*:", lowered) or "://" in target:
                 raise ValidationError(f"unsupported Markdown link in {relative}: {target}")
             target = unquote(target.split("#", 1)[0].split("?", 1)[0])
             if not target:
@@ -333,6 +348,7 @@ def main() -> int:
                 "core_sha256": aggregate,
                 "internal_markdown_links_checked": internal_link_count,
                 "public_file_count": len(files),
+                "public_packaging_revision": "r2",
                 "sanitized_file_count": 1,
                 "status": "passed",
             },

@@ -1,5 +1,23 @@
 # Changelog
 
+## v0.4.5 — 2026-11-14
+
+- Derived public lineage from accepted signed private candidate `candidate-593e5f3b81f1cdce`.
+- Recorded private governance-only improvements to full-input/result provenance, per-item evidence,
+  coverage and content/POSIX-permission/timestamp distinctions. The private harness remains excluded.
+- Preserved all seventeen public runtime files byte-for-byte relative to public-safe v0.4.4.
+  Sixteen match the signed private source; only three local PDF link targets are removed from its source map.
+- Documented exact historical 4+4 reuse (116 cases; 352/352 semantic assertions), not fresh contexts.
+- Generated current validation counts from signed records, including 84/84 release-unit checks;
+  the old public README's stale release-unit number is not carried into this release.
+- Public packaging r2 adds conservative reference-definition destination checks and documents
+  their syntax boundary after independent r1 mutation testing exposed missed reference links.
+  The failed r1 artifact and raw outputs are preserved privately; no private payload is changed.
+
+Private source materials, blind cases, evaluator outputs, approvals/signature files, keys, trust
+configuration and private checker implementations remain excluded. Lineage hashes are anchors,
+not a bundled private signature or proof of new behavioral evaluation.
+
 ## v0.4.4 — 2026-11-12
 
 - Added optional ARS coordination for research, paper, review, and specialized citation workflows,

@@ -1,6 +1,6 @@
 # Mathematical Academic Writing
 
-[![Version](https://img.shields.io/badge/version-v0.4.4-365E8D)](#validation)
+[![Version](https://img.shields.io/badge/version-v0.4.5-365E8D)](#validation)
 [![License: MIT](https://img.shields.io/badge/license-MIT-5F8C70)](LICENSE)
 [![Verify public core](https://github.com/JiahaoLi-creator/mathematical-academic-writing/actions/workflows/verify-core.yml/badge.svg)](https://github.com/JiahaoLi-creator/mathematical-academic-writing/actions/workflows/verify-core.yml)
 
@@ -99,7 +99,7 @@ removed when it only anticipates an unspecified objection or repeats a settled c
 
 ### From notebook revisions to a tested writing system
 
-The skill developed in eight stages.
+The skill developed in nine stages.
 
 1. **Concrete failures became review cases.** Notebook passages supplied examples of defensive
    framing, repeated conclusions, notation drift, and evidence inflation.
@@ -137,6 +137,11 @@ The skill developed in eight stages.
    research and citation workflows from mathematical/statistical verification, keeps citation syntax,
    source identity, and claim support distinct, and prevents quoted material or absent evidence from
    being treated as expanded authority or proof of nonexecution. ARS remains optional.
+
+9. **v0.4.5 strengthened private verification governance.** Complete original-input/result hash
+   binding and per-file content, POSIX-permission, timestamp and coverage reporting belong to the
+   private maintenance harness. The public writing runtime is unchanged; public packaging updates
+   its signed-source lineage and version documentation, not the writing rules.
 
 The project was developed iteratively with Codex. Model-generated drafts supplied candidate text
 and failure cases; explicit rules, regression oracles, semantic reviews, and human release
@@ -327,7 +332,7 @@ More reusable prompts are available in [examples/quick-start.md](examples/quick-
 
 ### 从 notebook 修改发展为可测试系统
 
-整个 skill 经历了八个阶段：
+整个 skill 经历了九个阶段：
 
 1. **将实际失败转化为 review cases。** Notebook 中的防御型表达、重复结论、记号漂移和
    evidence inflation 成为最初的回归样本。
@@ -359,6 +364,10 @@ More reusable prompts are available in [examples/quick-start.md](examples/quick-
 8. **v0.4.4 新增可选 ARS 协作与更明确的来源边界。** 将研究和引文工作流与数学、统计核验分工，
    区分引文格式、来源身份及主张支持；不把引用材料当成扩大权限的指令，也不把证据缺失当成未执行的证明。
    ARS 仍为可选依赖。
+
+9. **v0.4.5 完善私有验证治理。** 原始题面/结果的完整哈希绑定，以及逐项内容、POSIX 权限、
+   时间戳和覆盖状态分类，属于未公开的维护工具。公开写作 runtime 不变；本次更新公开包的签名来源
+   lineage 和版本文档，不宣称新增写作规则或分发私有检查器。
 
 该项目由 Codex 参与迭代：模型生成的稿件提供 candidate text 和失败案例，明确规则、回归
 oracle（预先锁定的预期结果）、语义审阅和人工 release 决定共同控制哪些修改可以进入正式版本。
@@ -626,37 +635,46 @@ statistical route.
 
 ## Validation | 验证
 
-The accepted, signed v0.4.4 private release is bound to `candidate-3aab2c75f512f30c`.
-Its accepted evaluation on 2026-10-24 used four fresh Stage 1 contexts and four separate fresh
-Stage 2 contexts. This public release derives from that exact signed runtime; publication checks
-do not constitute a new 4+4 behavioral evaluation.
+The accepted, signed v0.4.5 private release is bound to `candidate-593e5f3b81f1cdce`.
+It changes release governance only. Runtime and behavioral-harness hashes are unchanged from
+accepted v0.4.4; its evaluation explicitly reuses that exact accepted 4+4 sample. Both context-
+freshness fields are false. Public packaging is not a new model evaluation, and prepared-input
+replay does not certify historical model delivery.
 
-已接受并签名的私有 v0.4.4 release 绑定 `candidate-3aab2c75f512f30c`。其 2026-10-24 的
-accepted evaluation 使用四个全新 Stage 1 上下文和另外四个全新 Stage 2 上下文。本次公开包
-派生自该精确签名 runtime；发布检查不等于重新进行一次 4+4 行为评估。
+已接受并签名的私有 v0.4.5 release 绑定 `candidate-593e5f3b81f1cdce`，只修改发布治理。
+Runtime 与 behavioral harness 的哈希相对 accepted v0.4.4 不变，评估明确复用其精确 accepted
+4+4 样本，两阶段 freshness 均为 false。公开包装不是新模型评估；准备好的输入重放也不证明历史投递。
 
 | Suite / 测试套件 | First-stage result / 一阶段结果 | Semantic result / 语义结果 |
 | --- | ---: | ---: |
-| Synthetic review / 合成审阅 | 51/51 decisions | 135/135 assertions |
-| MATH3015 notebook review / MATH3015 notebook 审阅 | 14/14 decisions | 29/29 assertions |
-| Evidence-grounded drafting / 证据约束的起草 | 14/14 cases | 59/59 assertions |
-| Source, derivation, and artifact verification / 来源、推导与 artifact 核验 | 37/37 verdicts | 129/129 assertions |
+| Synthetic review / 合成审阅 | 51/51 cases | 135/135 assertions |
+| Notebook review / Notebook 审阅 | 14/14 cases | 29/29 assertions |
+| Evidence-grounded drafting / 证据约束起草 | 14/14 cases | 59/59 assertions |
+| Source and artifact verification / 来源与 artifact 核验 | 37/37 cases | 129/129 assertions |
 
-The signed validation records bind 116 first-stage cases and 352/352 semantic assertions,
-alongside 347/347 main, 46/46 corpus, 92/92 candidate-state, 24/24 release-unit, and 21/21
-signed-release boundary controls. These figures describe the accepted private validation lineage.
-The public verifier does not rerun the private corpus, blind cases, or independent semantic review.
+The retained evaluation lineage covers 116 first-stage cases and 352/352 semantic assertions.
+The v0.4.5 signed manifest records 347/347 main,
+46/46 corpus, 92/92 candidate-state and
+84/84 release-unit checks. These are private validation records: the public standalone
+verifier does not rerun private corpus checks, blind cases, or semantic model review.
 
-签名验证记录绑定 116 个一阶段案例、352/352 语义断言，以及 347/347 main、46/46 corpus、
-92/92 candidate-state、24/24 release-unit 和 21/21 signed-release boundary controls。
-这些数字描述 accepted 私有验证 lineage；公开 verifier 不重跑私有 corpus、blind cases 或独立语义审查。
+保留的评估 lineage 包含 116 个一阶段案例和 352/352 条语义断言。v0.4.5 签名 manifest 记录
+347/347 main、46/46 corpus、92/92 candidate-state、84/84 release-unit 检查。
+这些是私有验证记录；公开 standalone verifier 不重跑私有语料、盲评案例或模型语义审查。
 
-Sixteen public runtime files are byte-identical to the signed private runtime. The source map
-removes three local PDF links while preserving every link label, bibliography, locator, and routing
-rule. This is the only public runtime transformation and is explicitly bound in provenance.
+Sixteen runtime files match the signed source byte-for-byte. The source map removes exactly three
+local PDF link targets while preserving labels, bibliography, locators and routing rules. This is
+the only runtime transformation. Public core bytes remain identical to public-safe v0.4.4.
 
-十六个公开 runtime 文件与签名私有 runtime 逐字节一致；source map 仅去掉三个本地 PDF 链接，
-保留所有链接文字、书目、定位与路由规则。它是唯一的公开 runtime 变换，并已由 provenance 绑定。
+十六个 runtime 文件与签名来源逐字节一致；source map 仅去掉三个本地 PDF 链接目标，保留链接
+文字、书目、定位与路由规则。这是唯一 runtime 变换，公开 core 字节仍与 public-safe v0.4.4 相同。
+
+The public provenance contains lineage hash anchors, not the private manifest, signature or trust
+configuration. Its standalone check establishes the declared public binding, not independently
+authenticated private signature trust from this public package alone.
+
+公开 provenance 只包含 lineage 哈希锚点，不包含私有 manifest、签名或信任配置。
+Standalone 检查核对声明的公开绑定，不能仅凭这个公开包独立建立私有签名信任。
 
 ```text
 Public-safe core aggregate SHA-256
@@ -666,7 +684,7 @@ Accepted private runtime skill SHA-256
 0a2576bf66344ba7bff07b140a559dacbb398980c7111a9a060fc24f0d3b5b13
 
 Signed private manifest SHA-256
-97b8ace3df8c8dac44dafd174d2191316f748d3eff4fa041f33f22d5fd2d9bd7
+0ae93d3e47a05d9de9dec948168a46716df97a2d44aa55ca6554f9e7a916fe06
 ```
 
 Run the public check locally:
@@ -678,12 +696,21 @@ python3 -B scripts/verify_public_core.py
 ```
 
 The check verifies the exact public file allowlist, regular-file and link constraints, the seventeen
-core file hashes, their ordered aggregate, the recorded sanitization boundary, internal Markdown
-links, and a limited credential/path pattern scan. See
+core file hashes, their ordered aggregate, the recorded sanitization boundary, a conservative
+Markdown destination source scan, and a limited credential/path pattern scan. Public packaging
+revision r2 adds reference-definition targets to the inline/image destination scan. The scan
+checks every matching definition, even if unused or shown in an example: labels must be on one
+line and destinations on that line or the next (bare or angle-delimited). This covers ordinary
+full, collapsed and shortcut references without resolving label usage. It is not a CommonMark
+renderer: container-nested definitions, multiline labels, raw HTML/autolinks and other syntax
+need separate review; external URLs are not fetched. See
 [`provenance/public-release.v1.json`](provenance/public-release.v1.json) for the public binding.
 
 该检查核对公开文件 allowlist、普通文件与链接约束、十七个 core 文件 hash、它们按顺序计算的
-aggregate hash、已记录的净化边界、内部 Markdown links，以及有限的 credential/path pattern。公开 binding 记录在
+aggregate hash、已记录的净化边界、保守的 Markdown 目标源码扫描，以及有限的 credential/path pattern。
+公开包装 r2 还检查引用式定义（包括未使用或示例中的定义）：标签须单行，目标可在同一行或下一行，
+使用裸目标或尖括号目标。它不模拟完整 CommonMark 渲染；容器嵌套定义、多行标签、原始 HTML、
+autolinks 等语法需另行审查，也不联网检查外部 URL。公开 binding 记录在
 [`provenance/public-release.v1.json`](provenance/public-release.v1.json)。
 
 ## Public repository boundary | 公开仓库边界
